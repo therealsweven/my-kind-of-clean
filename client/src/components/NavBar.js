@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ClientLoginForm from "./forms/ClientLoginForm";
 //import { useQuery } from '@apollo/client';
 
 const NavBar = () => {
@@ -41,8 +42,8 @@ const NavBar = () => {
                       Refer a Friend
                     </Link>
                   </li>
-                  <li>
-                    <a className="text-info">Client Login</a>
+                  <li className="flex justify-center">
+                    <ClientLoginForm />
                   </li>
                 </ul>
               </details>

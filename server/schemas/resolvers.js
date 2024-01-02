@@ -25,6 +25,23 @@ const resolvers = {
       const client = await Client.create(userInput);
       return client;
     },
+    clientLogin: async (parent, { email, password }) => {
+      const client = await Client.findOne({ email });
+      console.log(client);
+      if (!client) {
+        throw new AuthenticationError(
+          "No client account with that information found!"
+        );
+      }
+
+      const correctPw = await client.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect password!");
+      }
+      const token = signToken(client);
+      return { token, client };
+    },
   },
 };
 

@@ -30,7 +30,7 @@ const Quote = () => {
         </h2>
       </div>
       <div className="bg-primary pb-3">
-        <h3 className="text-info text-xl font-semibold text-center">or</h3>
+        <h3 className="text-info text-xl font-semibold text-center mb-3">or</h3>
         <h2 className="text-info text-2xl font-bold text-center">
           Send us a message:
         </h2>

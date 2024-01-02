@@ -92,6 +92,7 @@ const typeDefs = gql`
       zip: String
       commMethod: String
     ): Client
+    clientLogin(email: String!, password: String!): Auth
   }
 `;
 

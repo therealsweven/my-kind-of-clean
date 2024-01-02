@@ -25,5 +25,15 @@ const CREATE_INQUIRY = gql`
     }
   }
 `;
+const CLIENT_LOGIN = gql`
+  mutation ClientLogin($email: String!, $password: String!) {
+    clientLogin(email: $email, password: $password) {
+      token
+      client {
+        _id
+      }
+    }
+  }
+`;
 
-export { CREATE_INQUIRY };
+export { CREATE_INQUIRY, CLIENT_LOGIN };

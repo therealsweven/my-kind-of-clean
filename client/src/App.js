@@ -15,6 +15,9 @@ import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
 import Quote from "./components/pages/Quote";
 import AdminHome from "./components/pages/AdminHome";
+import Gallery from "./components/pages/Gallery";
+import Refer from "./components/pages/Refer";
+import Reviews from "./components/pages/Reviews";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -50,6 +53,9 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/quote" element={<Quote />} />
             <Route path="/admin" element={<AdminHome />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/reviews" element={<Reviews />} />
+            <Route path="/referral" element={<Refer />} />
           </Routes>
         </div>
         <Footer />
