@@ -5,6 +5,7 @@ import { CLIENT_LOGIN } from "../../utils/mutations";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 
 export default function ClientLoginForm() {
   const [showModal, setShowModal] = React.useState(false);
@@ -39,7 +40,7 @@ export default function ClientLoginForm() {
       // verify token
       console.log(data.clientLogin);
       Auth.login(data.clientLogin.token, data.clientLogin.client._id);
-      navigate("/clientPortal");
+      navigate("/portal/dashboard");
       window.location.reload();
     } catch (err) {
       console.error(err);
@@ -110,9 +111,15 @@ export default function ClientLoginForm() {
                         />
                       </div>
 
-                      <div className="form-control mt-6">
+                      <div className="flex justify-between my-6 ">
+                        <Link
+                          to="/createAccount"
+                          className="text-s text-info hover:underline"
+                        >
+                          Create Account
+                        </Link>
                         <button
-                          className="btn btn-sm btn-accent mx-auto mb-6 text-info border border-info"
+                          className="btn btn-sm btn-accent text-info border border-info"
                           type="submit"
                           disabled={isSubmitting}
                         >

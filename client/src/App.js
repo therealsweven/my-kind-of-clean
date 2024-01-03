@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Auth from "./utils/auth";
 import "./App.css";
 import NavBar from "./components/NavBar";
+import ClientNavBar from "./components/ClientNavBar";
 import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
 import Quote from "./components/pages/Quote";
@@ -18,6 +19,11 @@ import AdminHome from "./components/pages/AdminHome";
 import Gallery from "./components/pages/Gallery";
 import Refer from "./components/pages/Refer";
 import Reviews from "./components/pages/Reviews";
+import CreateClientForm from "./components/forms/CreateClientForm";
+import ClientLoginForm from "./components/forms/ClientLoginForm";
+import Dashboard from "./components/pages/Dashboard";
+import Scheduler from "./components/pages/Scheduler";
+import Settings from "./components/pages/Settings";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -46,7 +52,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <NavBar />
+        {Auth.loggedIn() ? <ClientNavBar /> : <NavBar />}
 
         <div>
           <Routes>
@@ -56,6 +62,11 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/referral" element={<Refer />} />
+            <Route path="/createAccount" element={<CreateClientForm />} />
+            <Route path="/login" element={<ClientLoginForm />} />
+            <Route path="/portal/dashboard" element={<Dashboard />} />
+            <Route path="/portal/scheduler" element={<Scheduler />} />
+            <Route path="/portal/settings" element={<Settings />} />
           </Routes>
         </div>
         <Footer />

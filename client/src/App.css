@@ -37,7 +37,7 @@
   }
 }
 
-#headerLogo {
+.headerLogo {
   font-family: "Great Vibes", cursive;
   text-transform: capitalize;
   font-size: xx-large;

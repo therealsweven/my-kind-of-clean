@@ -35,5 +35,50 @@ const CLIENT_LOGIN = gql`
     }
   }
 `;
+const CREATE_CLIENT = gql`
+  mutation Mutation(
+    $firstName: String!
+    $lastName: String!
+    $email: String!
+    $password: String!
+    $phone: String
+    $street: String
+    $city: String
+    $state: String
+    $zip: String
+    $commMethod: String
+    $subscribe: Boolean
+  ) {
+    createClient(
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      password: $password
+      phone: $phone
+      street: $street
+      city: $city
+      state: $state
+      zip: $zip
+      commMethod: $commMethod
+      subscribe: $subscribe
+    ) {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      password
+      street
+      city
+      state
+      zip
+      invoices {
+        _id
+      }
+      commMethod
+      subscribe
+    }
+  }
+`;
 
-export { CREATE_INQUIRY, CLIENT_LOGIN };
+export { CREATE_INQUIRY, CLIENT_LOGIN, CREATE_CLIENT };

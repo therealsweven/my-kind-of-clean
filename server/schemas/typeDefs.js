@@ -91,6 +91,7 @@ const typeDefs = gql`
       state: String
       zip: String
       commMethod: String
+      subscribe: Boolean
     ): Client
     clientLogin(email: String!, password: String!): Auth
   }

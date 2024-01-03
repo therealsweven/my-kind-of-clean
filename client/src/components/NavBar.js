@@ -9,9 +9,8 @@ const NavBar = () => {
       <div className="navbar bg-accent">
         <div className="flex-1">
           <Link
-            id="headerLogo"
             to="/"
-            className="btn btn-ghost p-3 font-bold text-info"
+            className="headerLogo btn btn-ghost p-3 font-bold text-info"
           >
             My Kind of Clean
           </Link>

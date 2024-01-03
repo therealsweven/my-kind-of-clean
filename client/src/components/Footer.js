@@ -1,12 +1,19 @@
 import React from "react";
-
-//import headerLogo from "./images/white-transparent-logo.png";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
     <footer className="footer items-center p-4 bg-accent text-neutral-content">
       <div className="items-center grid-flow-col">
-        <img src="" className="h-10" alt="denver dj services logo" />
+        <div className="flex-1">
+          <h1
+            to="/"
+            className="headerLogo font-bold text-info my-3 mr-3"
+            style={{ "font-size": "large" }}
+          >
+            My Kind of Clean
+          </h1>
+        </div>
         <p className="text-info font-bold text-l">
           Copyright © 2023 - All right reserved
         </p>
