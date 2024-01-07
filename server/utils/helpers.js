@@ -21,7 +21,7 @@ module.exports = {
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: "info@denverdjservices.com",
+          user: "support@mykindofclean.net",
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
@@ -29,20 +29,20 @@ module.exports = {
         },
       });
       const mailOptions = {
-        from: "Denver DJ Services 🎵<info@denverdjservices.com>",
+        from: "My Kind of Clean <support@mykindofclean.net>",
         to: info.email,
         subject: "Inquiry Confirmation",
         text: `Hello ${info.name},
-        Thank you for inquiring about our DJ Services.  We will get back to you in 48 hours or less via your preferred method of communication.  If you have any immediate questions, please feel free to call our business telephone at (303)-815-7012.  We look forward to working with you.  Have a magical day!        
+        Thank you for inquiring about our cleaning services.  We will get back to you in 48 hours or less via your preferred method of communication.  If you have any immediate questions, please feel free to call our business telephone at (720)-846-3205.  We look forward to working with you.  Have a magical day!        
         Best wishes,
-        Denver DJ Services`,
+        My Kind of Clean`,
         html: `<p>Hello <b>${info.name}</b>,</br>
-        <p>Thank you for inquiring about our DJ Services.  We will get back to you in 48 hours or less via your preferred method of communication.  If you have any immediate questions, please feel free to call our business telephone at <a type="tel" href="3038157012">(303)-815-7012</a>.  We look forward to working with you.  Have a magical day!</p>
+        <p>Thank you for inquiring about our cleaning services.  We will get back to you in 48 hours or less via your preferred method of communication.  If you have any immediate questions, please feel free to call our business telephone at <a type="tel" href="7208463205">(720)-846-3205</a>.  We look forward to working with you.  Have a magical day!</p>
         </br></br>
         <p>Best wishes,</p></br>
-        <p>Denver DJ Services🎵</p>`,
+        <p>My Kind of Clean</p>`,
       };
-      const result = transporter.sendMail(mailOptions);
+      const result = await transporter.sendMail(mailOptions);
       console.log(result);
       return result;
     } catch (err) {
@@ -56,7 +56,7 @@ module.exports = {
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: "info@denverdjservices.com",
+          user: "support@mykindofclean.net",
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
@@ -64,24 +64,22 @@ module.exports = {
         },
       });
       const mailOptions = {
-        from: "Denver DJ Services 🎵<info@denverdjservices.com>",
-        to: "<bobby@denverdjservices.com>",
-        subject: "New DJ Inquiry",
+        from: "My Kind of Clean Support <support@mykindofclean.net>",
+        to: "<angelica@mykindofclean.net>",
+        subject: "New Cleaning Inquiry",
         text: `Name: ${info.name}
         Email: ${info.email}
         Phone: ${info.phone}
-        Date: ${info.date}
         Comm: ${info.commMethod}
-        Package: ${info.package}
-        Info: ${info.message}
+        Zip: ${info.location}
+        Message: ${info.message}
         `,
         html: `<h2>New Inquiry Info: </h2>
         <p>Name: ${info.name}</p>
         <p>Email: ${info.email}</p>
         <p>Phone: ${info.phone}</p>
-        <p>Date: ${info.date}</p>
         <p>Comm: ${info.commMethod}</p>
-        <p>Package: ${info.package}</p>
+        <p>Zip: ${info.location}</p>
         <p>Message: ${info.message}</p>`,
       };
       const result = transporter.sendMail(mailOptions);
