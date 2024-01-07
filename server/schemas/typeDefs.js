@@ -19,6 +19,8 @@ const typeDefs = gql`
     invoices: [Invoice]
     commMethod: String
     subscribe: Boolean
+    verified: Boolean
+    quoted: Boolean
   }
 
   type Admin {
@@ -94,6 +96,7 @@ const typeDefs = gql`
       subscribe: Boolean
     ): Client
     clientLogin(email: String!, password: String!): Auth
+    verifyEmail(_id: ID!, emailToken: String!): Client
   }
 `;
 

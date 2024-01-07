@@ -89,14 +89,14 @@ module.exports = {
       return err;
     }
   },
-  sendClientPortalLogin: async (info) => {
+  verifyEmail: async (info, emailToken) => {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: "info@denverdjservices.com",
+          user: "support@mykindofclean.net",
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
@@ -104,20 +104,18 @@ module.exports = {
         },
       });
       const mailOptions = {
-        from: "Denver DJ Services 🎵<info@denverdjservices.com>",
+        from: "My Kind of Clean<support@mykindofclean.net>",
         to: info.email,
-        subject: "Denver DJ Services Portal Access",
+        subject: "Verify Your Email",
         text: `Hello ${info.firstName},
         You may access our online portal to make payments and update your contact information.  Please visit www.denverdjservices.com to login using the email address this message was sent to and the temporary password provided in this email.  You may change your password once you are logged in.  Your temporary password is '${info.password}'.  Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, Denver DJ Services`,
         html: `<p>Hello ${info.firstName},</p>
-        <p>You can access our online portal to make digital payments and update your contact information.  Please visit www.denverdjservices.com to login using the email address this message was sent to and the temporary password provided in this email.  You may change your password once you are logged in. </p> 
-        <p>Your temporary password is <b>${info.password}</b>  </p>
-        <p>Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day!</p>
+        <p>Please verify your email by clicking the link below. </p> 
+        <a href="http://localhost:3000/verifyEmail/${info._id}/${emailToken}">VERIFY MY EMAIL ADDRESS</a>
         <p>Best wishes,</p></br>
-        <p>Denver DJ Services🎵</p>
-        <p>(303) 815-7012</p>`,
+        <p>My Kind of Clean</p>`,
       };
-      const result = transporter.sendMail(mailOptions);
+      const result = await transporter.sendMail(mailOptions);
       console.log(result);
       return result;
     } catch (err) {

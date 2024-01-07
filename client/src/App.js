@@ -24,6 +24,7 @@ import ClientLoginForm from "./components/forms/ClientLoginForm";
 import Dashboard from "./components/pages/Dashboard";
 import Scheduler from "./components/pages/Scheduler";
 import Settings from "./components/pages/Settings";
+import VerifyEmail from "./components/pages/VerifyEmail";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -67,6 +68,10 @@ function App() {
             <Route path="/portal/dashboard" element={<Dashboard />} />
             <Route path="/portal/scheduler" element={<Scheduler />} />
             <Route path="/portal/settings" element={<Settings />} />
+            <Route
+              path="/verifyEmail/:_id/:emailToken"
+              element={<VerifyEmail />}
+            />
           </Routes>
         </div>
         <Footer />

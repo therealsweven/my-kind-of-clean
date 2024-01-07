@@ -80,5 +80,13 @@ const CREATE_CLIENT = gql`
     }
   }
 `;
+const VERIFY_EMAIL = gql`
+  mutation Mutation($id: ID!, $emailToken: String!) {
+    verifyEmail(_id: $id, emailToken: $emailToken) {
+      _id
+      verified
+    }
+  }
+`;
 
-export { CREATE_INQUIRY, CLIENT_LOGIN, CREATE_CLIENT };
+export { CREATE_INQUIRY, CLIENT_LOGIN, CREATE_CLIENT, VERIFY_EMAIL };

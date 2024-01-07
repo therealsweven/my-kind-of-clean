@@ -46,6 +46,12 @@ const clientSchema = new Schema(
     subscribe: {
       type: Boolean,
     },
+    verified: {
+      type: Boolean,
+    },
+    quoted: {
+      type: Boolean,
+    },
   },
   {
     timestamps: true,
