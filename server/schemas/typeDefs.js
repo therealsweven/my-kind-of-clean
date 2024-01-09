@@ -61,7 +61,7 @@ const typeDefs = gql`
   }
 
   type Query {
-    client: Client
+    clientById(clientId: ID!): Client
     inquiries: [Inquiry]!
   }
 
@@ -96,7 +96,7 @@ const typeDefs = gql`
       subscribe: Boolean
     ): Client
     clientLogin(email: String!, password: String!): Auth
-    verifyEmail(_id: ID!, emailToken: String!): Client
+    verifyEmail(clientId: ID!, emailToken: String!): Client
   }
 `;
 

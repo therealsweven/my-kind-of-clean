@@ -16,5 +16,35 @@ const QUERY_INQUIRIES = gql`
     }
   }
 `;
+const QUERY_USER_BY_ID = gql`
+  query Query($clientId: ID!) {
+    clientById(clientId: $clientId) {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      password
+      street
+      city
+      state
+      zip
+      invoices {
+        _id
+        amount
+        discount
+        dateOfClean
+        notes
+        active
+        depositPaid
+        depositAmount
+      }
+      commMethod
+      subscribe
+      verified
+      quoted
+    }
+  }
+`;
 
-export { QUERY_INQUIRIES };
+export { QUERY_INQUIRIES, QUERY_USER_BY_ID };

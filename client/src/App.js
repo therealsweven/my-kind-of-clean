@@ -69,7 +69,7 @@ function App() {
             <Route path="/portal/scheduler" element={<Scheduler />} />
             <Route path="/portal/settings" element={<Settings />} />
             <Route
-              path="/verifyEmail/:_id/:emailToken"
+              path="/verifyEmail/:clientId/:emailToken"
               element={<VerifyEmail />}
             />
           </Routes>

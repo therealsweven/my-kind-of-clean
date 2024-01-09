@@ -11,6 +11,9 @@ const resolvers = {
     inquiries: async () => {
       return await Inquiry.find();
     },
+    clientById: async (parent, userInput) => {
+      return await Client.findById({ _id: userInput.clientId });
+    },
   },
 
   Mutation: {
@@ -53,23 +56,18 @@ const resolvers = {
       const token = signToken(client);
       return { token, client };
     },
-    verifyEmail: async (parent, { _id, emailToken }) => {
-      console.log(_id, emailToken);
+    verifyEmail: async (parent, { clientId, emailToken }) => {
+      console.log(clientId, emailToken);
       const decode = jwt.verify(emailToken, "alakazam934");
       console.log(decode);
-      const client = await Client.findOneAndUpdate(
-        { _id },
+      const client = await Client.findByIdAndUpdate(
+        { _id: clientId },
         { $set: { verified: true } },
         { new: true }
       );
       console.log(client);
-      if (!client) {
-        throw new AuthenticationError(
-          "No client account with that information found!"
-        );
-      }
 
-      return { client };
+      return client;
     },
   },
 };

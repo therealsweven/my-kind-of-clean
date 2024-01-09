@@ -81,8 +81,8 @@ const CREATE_CLIENT = gql`
   }
 `;
 const VERIFY_EMAIL = gql`
-  mutation Mutation($id: ID!, $emailToken: String!) {
-    verifyEmail(_id: $id, emailToken: $emailToken) {
+  mutation Mutation($clientId: ID!, $emailToken: String!) {
+    verifyEmail(clientId: $clientId, emailToken: $emailToken) {
       _id
       verified
     }
