@@ -1,6 +1,40 @@
 const { Schema, model } = require("mongoose");
 const bcrypt = require("bcrypt");
 
+const propertySchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  street: {
+    type: String,
+    required: true,
+  },
+  street2: {
+    type: String,
+  },
+  city: {
+    type: String,
+    required: true,
+  },
+  state: {
+    type: String,
+    required: true,
+  },
+  zip: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    required: true,
+  },
+  quoted: {
+    type: Boolean,
+  },
+  cleanings: [{ type: Schema.Types.ObjectId, ref: "Cleaning" }],
+});
+
 const clientSchema = new Schema(
   {
     firstName: {
@@ -49,9 +83,7 @@ const clientSchema = new Schema(
     verified: {
       type: Boolean,
     },
-    quoted: {
-      type: Boolean,
-    },
+    properties: [{ type: Schema.Types.ObjectId, ref: "Property" }],
   },
   {
     timestamps: true,
@@ -73,6 +105,7 @@ clientSchema.methods.isCorrectPassword = async function (password) {
   return bcrypt.compare(password, this.password);
 };
 
+const Property = model("Property", propertySchema);
 const Client = model("Client", clientSchema);
 
-module.exports = { Client };
+module.exports = { Client, Property };

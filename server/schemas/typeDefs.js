@@ -43,14 +43,26 @@ const typeDefs = gql`
     active: Boolean
     createdAt: String
   }
+
+  type Cleaning {
+    _id: ID!
+    date: String!
+    dayOfWeek: String!
+    repeating: String!
+    startTime: String!
+    endTime: String!
+    client: Client
+    property: Property
+  }
+
   type Invoice {
     _id: ID!
     client: Client
     amount: Int
     discount: Int
-    dateOfClean: String
+    cleaning: Cleaning
     notes: String
-    active: Boolean
+    paid: Boolean
     depositPaid: Boolean
     depositAmount: Int
   }
