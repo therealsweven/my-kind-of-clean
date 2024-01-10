@@ -62,6 +62,7 @@ const typeDefs = gql`
 
   type Query {
     clientById(clientId: ID!): Client
+    me: Client
     inquiries: [Inquiry]!
   }
 

@@ -14,6 +14,9 @@ const resolvers = {
     clientById: async (parent, userInput) => {
       return await Client.findById({ _id: userInput.clientId });
     },
+    me: async (parent, args, context) => {
+      return await Client.findById({ _id: context.headers.clientId });
+    },
   },
 
   Mutation: {

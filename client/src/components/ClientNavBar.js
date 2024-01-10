@@ -9,7 +9,7 @@ const ClientNavBar = () => {
       <div className="navbar bg-accent">
         <div className="flex-1">
           <Link
-            to="/"
+            to="/portal/dashboard"
             className="headerLogo btn btn-ghost p-3 font-bold text-info"
           >
             My Kind of Clean
@@ -57,7 +57,7 @@ const ClientNavBar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/referral" className="text-info">
+                    <Link to="/portal/referral" className="text-info">
                       Refer a Friend
                     </Link>
                   </li>
