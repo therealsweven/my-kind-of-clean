@@ -21,6 +21,8 @@ const typeDefs = gql`
     subscribe: Boolean
     verified: Boolean
     quoted: Boolean
+    properties: [Property]
+    cleanings: [Cleaning]
   }
 
   type Admin {
@@ -44,15 +46,28 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type Property {
+    name: String
+    street: String
+    street2: String
+    city: String
+    state: String
+    zip: String
+    type: String
+    quoted: Boolean
+    cleanings: [Cleaning]
+  }
+
   type Cleaning {
     _id: ID!
     date: String!
-    dayOfWeek: String!
-    repeating: String!
     startTime: String!
     endTime: String!
+    notes: String
+    approved: Boolean
     client: Client
     property: Property
+    invoice: Invoice
   }
 
   type Invoice {
@@ -75,6 +90,7 @@ const typeDefs = gql`
   type Query {
     clientById(clientId: ID!): Client
     me: Client
+    meTest(clientId: ID!): Client
     inquiries: [Inquiry]!
   }
 

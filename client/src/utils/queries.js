@@ -47,4 +47,50 @@ const QUERY_USER_BY_ID = gql`
   }
 `;
 
-export { QUERY_INQUIRIES, QUERY_USER_BY_ID };
+const QUERY_ME = gql`
+  query Query {
+    me {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      password
+      street
+      city
+      state
+      zip
+      invoices {
+        _id
+      }
+      commMethod
+      subscribe
+      verified
+      quoted
+      properties {
+        city
+        name
+        quoted
+        state
+        street
+        street2
+        type
+        zip
+      }
+      cleanings {
+        _id
+        approved
+        date
+        endTime
+        invoice {
+          _id
+        }
+        notes
+
+        startTime
+      }
+    }
+  }
+`;
+
+export { QUERY_INQUIRIES, QUERY_USER_BY_ID, QUERY_ME };

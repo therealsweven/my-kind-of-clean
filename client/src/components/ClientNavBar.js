@@ -15,26 +15,7 @@ const ClientNavBar = () => {
             My Kind of Clean
           </Link>
         </div>
-        <p>
-          {/* 
-          
-          template <class C>
-          class board implements piece {
-            piece* = malloc(sizeof(C)^2);
-
-
-
-
-
-          } ;
-          
-          
-          
-          
-          
-          
-          */}
-        </p>
+        <p></p>
         <div className="flex-none">
           <ul className="menu menu-horizontal px-1">
             <li>
@@ -53,7 +34,7 @@ const ClientNavBar = () => {
                   </li>
                   <li>
                     <Link to="/portal/settings" className="text-info">
-                      Settings
+                      Account
                     </Link>
                   </li>
                   <li>

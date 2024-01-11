@@ -84,6 +84,7 @@ const clientSchema = new Schema(
       type: Boolean,
     },
     properties: [{ type: Schema.Types.ObjectId, ref: "Property" }],
+    cleanings: [{ type: Schema.Types.ObjectId, ref: "Cleaning" }],
   },
   {
     timestamps: true,

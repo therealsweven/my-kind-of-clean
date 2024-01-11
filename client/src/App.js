@@ -35,12 +35,14 @@ const authLink = setContext((_, { headers }) => {
   // get the authentication token from local storage if it exists
   const token = localStorage.getItem("id_token");
   const adminLoggedIn = localStorage.getItem("adminLoggedIn");
+  const clientId = localStorage.getItem("clientId");
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
       adminLoggedIn: adminLoggedIn,
+      clientId: clientId,
     },
   };
 });

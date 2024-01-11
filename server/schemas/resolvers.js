@@ -1,8 +1,10 @@
 const helpers = require("../utils/helpers");
 const jwt = require("jsonwebtoken");
 const { AuthenticationError } = require("apollo-server-express");
-const { Client } = require("../models/Client");
+const { Client, Property } = require("../models/Client");
+const { Cleaning } = require("../models/Cleaning");
 const { Inquiry } = require("../models/Inquiry");
+const { Invoice } = require("../models/Invoice");
 
 const { signToken } = require("../utils/auth");
 
@@ -15,7 +17,17 @@ const resolvers = {
       return await Client.findById({ _id: userInput.clientId });
     },
     me: async (parent, args, context) => {
-      return await Client.findById({ _id: context.headers.clientId });
+      console.log(context.headers.clientid);
+      return await Client.findById({ _id: context.headers.clientid }).populate([
+        "properties",
+        "invoices",
+      ]);
+    },
+    meTest: async (parent, args, context) => {
+      return await Client.findById({ _id: args.clientId }).populate([
+        "properties",
+        "invoices",
+      ]);
     },
   },
 
