@@ -126,6 +126,7 @@ const typeDefs = gql`
     ): Client
     clientLogin(email: String!, password: String!): Auth
     verifyEmail(clientId: ID!, emailToken: String!): Client
+    sendVerificationLink(clientId: ID!): Client
   }
 `;
 

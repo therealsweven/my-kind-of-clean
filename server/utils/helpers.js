@@ -108,10 +108,15 @@ module.exports = {
         to: info.email,
         subject: "Verify Your Email",
         text: `Hello ${info.firstName},
-        You may access our online portal to make payments and update your contact information.  Please visit www.denverdjservices.com to login using the email address this message was sent to and the temporary password provided in this email.  You may change your password once you are logged in.  Your temporary password is '${info.password}'.  Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, Denver DJ Services`,
+        Please verify your email by clicking the link below.
+        http://localhost:3000/verifyEmail/${info._id}/${emailToken}
+        This link will expire in 24 hours.
+       Best wishes,
+        My Kind of Clean`,
         html: `<p>Hello ${info.firstName},</p>
         <p>Please verify your email by clicking the link below. </p> 
         <a href="http://localhost:3000/verifyEmail/${info._id}/${emailToken}">VERIFY MY EMAIL ADDRESS</a>
+        <p>This link will expire in 24 hours.</p>
         <p>Best wishes,</p></br>
         <p>My Kind of Clean</p>`,
       };

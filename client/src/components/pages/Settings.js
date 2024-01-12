@@ -1,6 +1,6 @@
-import React from "react";
+import { React, useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 import UpdatePhoneForm from "../forms/UpdatePhoneForm";
 import UpdateEmailForm from "../forms/UpdateEmailForm";
@@ -8,13 +8,26 @@ import UpdateCommMethodForm from "../forms/UpdateCommMethodForm";
 import UpdateSubscribeForm from "../forms/UpdateSubscribeForm";
 import UpdateAddressForm from "../forms/UpdateAddressForm";
 import UpdatePasswordForm from "../forms/UpdatePasswordForm";
+import { SEND_VERIFICATION_LINK } from "../../utils/mutations";
 
 const Settings = () => {
+  const [linkSent, setLinkSent] = useState(false);
   const { loading, data, error } = useQuery(QUERY_ME, {
     onCompleted: (data) => console.log("Query completed:", data),
     onError: (error) => console.error("Query error:", error),
   });
   const me = data?.me || [];
+
+  const [sendVerificationLink] = useMutation(SEND_VERIFICATION_LINK);
+  const handleSendLink = async () => {
+    console.log(me._id);
+    const { data } = await sendVerificationLink({
+      variables: {
+        clientId: me._id,
+      },
+    });
+    setLinkSent(true);
+  };
 
   if (loading) {
     return <h2>...loading</h2>;
@@ -48,11 +61,19 @@ const Settings = () => {
             <div className="flex flex-col py-6">
               <td className="">{me.email} </td>
               {me.verified && <td className="text-xs">✅ Verified</td>}
-              {!me.verified && (
+              {!me.verified && !linkSent && (
                 <td>
-                  <button className="text-xs underline">
+                  <button
+                    className="text-xs underline"
+                    onClick={handleSendLink}
+                  >
                     Send Verification Link
                   </button>
+                </td>
+              )}
+              {!me.verified && linkSent && (
+                <td>
+                  <p className="text-xs ">Verification Link Sent To Email</p>
                 </td>
               )}
             </div>

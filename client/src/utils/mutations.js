@@ -88,5 +88,18 @@ const VERIFY_EMAIL = gql`
     }
   }
 `;
+const SEND_VERIFICATION_LINK = gql`
+  mutation Mutation($clientId: ID!) {
+    sendVerificationLink(clientId: $clientId) {
+      _id
+    }
+  }
+`;
 
-export { CREATE_INQUIRY, CLIENT_LOGIN, CREATE_CLIENT, VERIFY_EMAIL };
+export {
+  CREATE_INQUIRY,
+  CLIENT_LOGIN,
+  CREATE_CLIENT,
+  VERIFY_EMAIL,
+  SEND_VERIFICATION_LINK,
+};

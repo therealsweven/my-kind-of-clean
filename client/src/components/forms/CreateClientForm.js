@@ -268,6 +268,10 @@ export default function CreateClientForm() {
                     I have read, understand, and agree to the{" "}
                     <Link to="/privacyPolicy" className="underline">
                       privacy policy
+                    </Link>{" "}
+                    and{" "}
+                    <Link to="/terms" className="underline">
+                      terms & conditions
                     </Link>
                     . I consent to receiving newsletters and promotional offers
                     via email from My Kind of Clean. You may unsubscribe at any

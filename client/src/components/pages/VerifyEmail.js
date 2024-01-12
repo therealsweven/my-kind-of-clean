@@ -3,14 +3,16 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
-import { VERIFY_EMAIL } from "../../utils/mutations";
+import { VERIFY_EMAIL, SEND_VERIFICATION_LINK } from "../../utils/mutations";
 import { QUERY_USER_BY_ID } from "../../utils/queries";
 
 const VerifyEmail = () => {
   const [isValidToken, setIsValidToken] = useState(false);
   const [needNewLink, setNeedNewLink] = useState(false);
+  const [linkSent, setLinkSent] = useState(false);
 
   const [verifyEmail] = useMutation(VERIFY_EMAIL);
+  const [sendVerificationLink] = useMutation(SEND_VERIFICATION_LINK);
   let { clientId } = useParams();
   let { emailToken } = useParams();
 
@@ -36,8 +38,16 @@ const VerifyEmail = () => {
     console.log(response.data.verifyEmail.verified);
     if (response.data.verifyEmail.verified === true) {
       setIsValidToken(true);
+    } else {
+      setNeedNewLink(true);
     }
   }
+
+  const handleSendLink = async () => {
+    const response = await sendVerificationLink({ variables: { clientId } });
+    console.log(response);
+    setLinkSent(true);
+  };
 
   if (!alreadyVerified && !isValidToken) {
     return (
@@ -83,7 +93,19 @@ const VerifyEmail = () => {
           Sorry! Your verification link is expired; please click below to send a
           new one.
         </h2>
-        <button className="btn btn-accent text-xl">Send New Link</button>
+        <button className="btn btn-accent text-xl" onClick={handleSendLink}>
+          Send New Link
+        </button>
+      </>
+    );
+  }
+  if (linkSent) {
+    return (
+      <>
+        <h2 className="text-info text-2xl my-3 text-center">
+          A new verification link has been sent to your email, please check your
+          inbox.
+        </h2>
       </>
     );
   }

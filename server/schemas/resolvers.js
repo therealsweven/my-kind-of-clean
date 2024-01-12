@@ -49,7 +49,7 @@ const resolvers = {
       userInput.verified = false;
       const client = await Client.create(userInput);
       const emailToken = jwt.sign({ _id: client._id }, "alakazam934", {
-        expiresIn: "1d",
+        expiresIn: "24hr",
       });
       await helpers.verifyEmail(client, emailToken);
       return client;
@@ -82,6 +82,16 @@ const resolvers = {
       );
       console.log(client);
 
+      return client;
+    },
+    sendVerificationLink: async (parent, { clientId }) => {
+      console.log("clientId:", clientId);
+      const client = await Client.findById({ _id: clientId });
+      console.log(client);
+      const emailToken = jwt.sign({ _id: clientId }, "alakazam934", {
+        expiresIn: "24hr",
+      });
+      await helpers.verifyEmail(client, emailToken);
       return client;
     },
   },
