@@ -142,6 +142,21 @@ const UPDATE_PASSWORD = gql`
     }
   }
 `;
+const UPDATE_SUBSCRIBE = gql`
+  mutation UpdateSubscribe($subscribe: Boolean!) {
+    updateSubscribe(subscribe: $subscribe) {
+      _id
+      subscribe
+    }
+  }
+`;
+const DESTROY_ACCOUNT = gql`
+  mutation DestroyAccount($password: String!) {
+    destroyAccount(password: $password) {
+      _id
+    }
+  }
+`;
 
 export {
   CREATE_INQUIRY,
@@ -154,4 +169,6 @@ export {
   UPDATE_COMM_METHOD,
   UPDATE_ADDRESS,
   UPDATE_PASSWORD,
+  UPDATE_SUBSCRIBE,
+  DESTROY_ACCOUNT,
 };

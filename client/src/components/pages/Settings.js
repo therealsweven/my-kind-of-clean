@@ -141,6 +141,13 @@ const Settings = () => {
                 <p>billing to your account.</p>
               </td>
             )}
+            {!me.subscribe && (
+              <td>
+                <p>You are not subcribed to receive any emails</p>
+                <p>other than emails regarding billing to</p>
+                <p>your account.</p>
+              </td>
+            )}
             <td>
               <UpdateSubscribeForm me={me} />
             </td>
@@ -153,19 +160,19 @@ const Settings = () => {
           <tr className="border-y border-secondary">
             <th>Privacy Policy</th>
             <td className="py-6 underline">
-              <Link>View Privacy Policy</Link>
+              <Link to="/privacyPolicy">View Privacy Policy</Link>
             </td>
           </tr>
           <tr className="border-y border-secondary">
             <th>Cookie Policy</th>
             <td className="py-6 underline">
-              <Link>View Cookie Policy</Link>
+              <Link to="/cookiePolicy">View Cookie Policy</Link>
             </td>
           </tr>
           <tr className="border-y border-secondary">
-            <th>Terms of Service</th>
+            <th>Terms and Conditions</th>
             <td className="py-6 underline">
-              <Link>Terms of Service</Link>
+              <Link to="/terms">Terms and Conditions</Link>
             </td>
           </tr>
         </table>

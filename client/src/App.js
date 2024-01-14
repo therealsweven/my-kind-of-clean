@@ -26,6 +26,9 @@ import Scheduler from "./components/pages/Scheduler";
 import Settings from "./components/pages/Settings";
 import VerifyEmail from "./components/pages/VerifyEmail";
 import ReferLoggedIn from "./components/pages/ReferLoggedIn";
+import PrivacyPolicy from "./components/pages/PrivacyPolicy";
+import CookiePolicy from "./components/pages/CookiePolicy";
+import Terms from "./components/pages/Terms";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -72,6 +75,9 @@ function App() {
             <Route path="/portal/scheduler" element={<Scheduler />} />
             <Route path="/portal/settings" element={<Settings />} />
             <Route path="/portal/referral" element={<ReferLoggedIn />} />
+            <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
+            <Route path="/cookiePolicy" element={<CookiePolicy />} />
+            <Route path="/terms" element={<Terms />} />
             <Route
               path="/verifyEmail/:clientId/:emailToken"
               element={<VerifyEmail />}

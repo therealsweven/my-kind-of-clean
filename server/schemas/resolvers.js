@@ -7,6 +7,7 @@ const { Inquiry } = require("../models/Inquiry");
 const { Invoice } = require("../models/Invoice");
 
 const { signToken } = require("../utils/auth");
+const bcrypt = require("bcrypt");
 
 const resolvers = {
   Query: {
@@ -160,13 +161,15 @@ const resolvers = {
     },
     updatePassword: async (parent, { password, newPassword }, context) => {
       if (context.user) {
-        const client = await Client.findById({ _id: context.headers.clientid });
+        let client = await Client.findById({ _id: context.headers.clientid });
 
-        const correctPw = await client.isCorrectPassword(password);
+        let correctPw = await client.isCorrectPassword(password);
 
         if (!correctPw) {
           throw new AuthenticationError("Incorrect password!");
         }
+        const saltRounds = 10;
+        newPassword = await bcrypt.hash(newPassword, saltRounds);
         client = await Client.findByIdAndUpdate(
           { _id: context.headers.clientid },
           { $set: { password: newPassword } },
@@ -177,6 +180,29 @@ const resolvers = {
       throw new AuthenticationError(
         "You must be logged in to make changes to your account."
       );
+    },
+    updateSubscribe: async (parent, { subscribe }, context) => {
+      console.log(subscribe);
+      const client = await Client.findByIdAndUpdate(
+        { _id: context.headers.clientid },
+        { $set: { subscribe: subscribe } },
+        { new: true }
+      );
+      return client;
+    },
+    destroyAccount: async (parent, { password }, context) => {
+      if (context.user) {
+        const client = await Client.findById({ _id: context.headers.clientid });
+
+        let correctPw = await client.isCorrectPassword(password);
+
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect password!");
+        }
+        await Client.findByIdAndDelete({ _id: context.headers.clientid });
+        await helpers.sendDeleteConfirmation(client);
+        return client;
+      }
     },
   },
 };

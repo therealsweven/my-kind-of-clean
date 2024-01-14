@@ -3,15 +3,11 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useMutation } from "@apollo/client";
 import { UPDATE_PASSWORD } from "../../utils/mutations";
 import * as Yup from "yup";
-import { useNavigate } from "react-router-dom";
-import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
 
 export default function UpdatePasswordForm() {
   const [showModal, setShowModal] = React.useState(false);
 
   const [updatePassword, { error, data }] = useMutation(UPDATE_PASSWORD);
-  const navigate = useNavigate();
   const initialValues = {
     currentPassword: "",
     password: "",
@@ -36,14 +32,10 @@ export default function UpdatePasswordForm() {
           newPassword: values.password,
         },
       });
-
+      console.log(data);
       resetForm();
       console.log("submitted");
       setShowModal(false);
-      // verify token
-      console.log(data.clientLogin);
-      Auth.login(data.clientLogin.token, data.clientLogin.client._id);
-      navigate("/portal/dashboard");
     } catch (err) {
       console.error(err);
     }

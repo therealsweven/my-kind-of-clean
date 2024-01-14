@@ -127,6 +127,40 @@ module.exports = {
       return err;
     }
   },
+  sendDeleteConfirmation: async (info) => {
+    try {
+      const accessToken = await oAuth2Client.getAccessToken();
+      const transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+          type: "OAuth2",
+          user: "support@mykindofclean.net",
+          clientId: process.env.CLIENT_ID,
+          clientSecret: process.env.CLIENT_SECRET,
+          refreshToken: process.env.REFRESH_TOKEN,
+          accessToken: accessToken,
+        },
+      });
+      const mailOptions = {
+        from: "My Kind of Clean<support@mykindofclean.net>",
+        to: info.email,
+        subject: "Your Account Has Been Deleted",
+        text: `Hello ${info.firstName},
+        Your account has been successfully deleted. You will no longer be able to access the client portal unless you create a new account.
+       Best wishes,
+        My Kind of Clean`,
+        html: `<p>Hello ${info.firstName},</p>
+        <p>Your account has been successfully deleted. You will no longer be able to access the client portal unless you create a new account. </p> 
+        <p>Best wishes,</p></br>
+        <p>My Kind of Clean</p>`,
+      };
+      const result = await transporter.sendMail(mailOptions);
+      console.log(result);
+      return result;
+    } catch (err) {
+      return err;
+    }
+  },
   sendTempPW: async (info, tempPW) => {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
