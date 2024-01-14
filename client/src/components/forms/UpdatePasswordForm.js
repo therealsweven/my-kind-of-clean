@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useMutation } from "@apollo/client";
-import { CLIENT_LOGIN } from "../../utils/mutations";
+import { UPDATE_PASSWORD } from "../../utils/mutations";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import Auth from "../../utils/auth";
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function UpdatePasswordForm() {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [clientLogin, { error, data }] = useMutation(CLIENT_LOGIN);
+  const [updatePassword, { error, data }] = useMutation(UPDATE_PASSWORD);
   const navigate = useNavigate();
   const initialValues = {
     currentPassword: "",
@@ -30,10 +30,10 @@ export default function UpdatePasswordForm() {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       console.log(values);
-      const { data } = await clientLogin({
+      const { data } = await updatePassword({
         variables: {
-          email: values.email,
-          password: values.password,
+          password: values.currentPassword,
+          newPassword: values.password,
         },
       });
 
@@ -44,7 +44,6 @@ export default function UpdatePasswordForm() {
       console.log(data.clientLogin);
       Auth.login(data.clientLogin.token, data.clientLogin.client._id);
       navigate("/portal/dashboard");
-      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -140,7 +139,7 @@ export default function UpdatePasswordForm() {
                           type="submit"
                           disabled={isSubmitting}
                         >
-                          Login
+                          Save
                         </button>
                       </div>
                     </Form>

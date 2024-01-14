@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useMutation } from "@apollo/client";
-import { CLIENT_LOGIN } from "../../utils/mutations";
+import { UPDATE_ADDRESS } from "../../utils/mutations";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import Auth from "../../utils/auth";
@@ -10,31 +10,34 @@ import { Link } from "react-router-dom";
 export default function UpdateAddressForm() {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [clientLogin, { error, data }] = useMutation(CLIENT_LOGIN);
+  const [updateAddress, { error, data }] = useMutation(UPDATE_ADDRESS);
   const navigate = useNavigate();
   const initialValues = {
     email: "",
   };
 
   const validationSchema = Yup.object().shape({
-    email: Yup.string()
-      .email("Email address not formatted correctly")
-      .required("This field is required"),
+    street: Yup.string().required("This field is required"),
+    city: Yup.string().required("This field is required"),
+    state: Yup.string().required("This field is required"),
+    zip: Yup.string().required("This field is required"),
   });
 
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       console.log(values);
-      const { data } = await clientLogin({
+      const { data } = await updateAddress({
         variables: {
-          email: values.email,
+          street: values.street,
+          city: values.city,
+          state: values.state,
+          zip: values.zip,
         },
       });
 
       resetForm();
       console.log("submitted");
       setShowModal(false);
-      window.location.reload();
     } catch (err) {
       console.error(err);
     }
@@ -70,18 +73,69 @@ export default function UpdateAddressForm() {
                   {({ isSubmitting }) => (
                     <Form>
                       <div className="form-control">
-                        <label className="label" htmlFor="email">
+                        <label className="label" htmlFor="street">
                           <span className="label-text text-xl text-info">
-                            New Email Address
+                            Street
                           </span>
                         </label>
                         <Field
                           className="input input-bordered"
                           type="text"
-                          name="email"
+                          name="street"
                         />
                         <ErrorMessage
-                          name="email"
+                          name="street"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label className="label" htmlFor="city">
+                          <span className="label-text text-xl text-info">
+                            City
+                          </span>
+                        </label>
+                        <Field
+                          className="input input-bordered"
+                          type="text"
+                          name="city"
+                        />
+                        <ErrorMessage
+                          name="city"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label className="label" htmlFor="state">
+                          <span className="label-text text-xl text-info">
+                            State
+                          </span>
+                        </label>
+                        <Field
+                          className="input input-bordered"
+                          type="text"
+                          name="state"
+                        />
+                        <ErrorMessage
+                          name="state"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                      <div className="form-control">
+                        <label className="label" htmlFor="zip">
+                          <span className="label-text text-xl text-info">
+                            Zip
+                          </span>
+                        </label>
+                        <Field
+                          className="input input-bordered"
+                          type="text"
+                          name="zip"
+                        />
+                        <ErrorMessage
+                          name="zip"
                           component="div"
                           className="error"
                         />

@@ -95,6 +95,53 @@ const SEND_VERIFICATION_LINK = gql`
     }
   }
 `;
+const UPDATE_EMAIL = gql`
+  mutation Mutation($email: String!) {
+    updateEmail(email: $email) {
+      _id
+      email
+    }
+  }
+`;
+const UPDATE_PHONE = gql`
+  mutation Mutation($phone: String!) {
+    updatePhone(phone: $phone) {
+      _id
+      phone
+    }
+  }
+`;
+const UPDATE_COMM_METHOD = gql`
+  mutation Mutation($commMethod: String!) {
+    updateCommMethod(commMethod: $commMethod) {
+      _id
+      commMethod
+    }
+  }
+`;
+const UPDATE_ADDRESS = gql`
+  mutation Mutation(
+    $street: String!
+    $city: String!
+    $state: String!
+    $zip: String!
+  ) {
+    updateAddress(street: $street, city: $city, state: $state, zip: $zip) {
+      _id
+      state
+      street
+      zip
+      city
+    }
+  }
+`;
+const UPDATE_PASSWORD = gql`
+  mutation Mutation($password: String!, $newPassword: String!) {
+    updatePassword(password: $password, newPassword: $newPassword) {
+      _id
+    }
+  }
+`;
 
 export {
   CREATE_INQUIRY,
@@ -102,4 +149,9 @@ export {
   CREATE_CLIENT,
   VERIFY_EMAIL,
   SEND_VERIFICATION_LINK,
+  UPDATE_EMAIL,
+  UPDATE_PHONE,
+  UPDATE_COMM_METHOD,
+  UPDATE_ADDRESS,
+  UPDATE_PASSWORD,
 };

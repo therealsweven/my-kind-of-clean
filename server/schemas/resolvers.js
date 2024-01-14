@@ -17,7 +17,7 @@ const resolvers = {
       return await Client.findById({ _id: userInput.clientId });
     },
     me: async (parent, args, context) => {
-      console.log(context.headers.clientid);
+      //console.log(context.headers.clientid);
       return await Client.findById({ _id: context.headers.clientid }).populate([
         "properties",
         "invoices",
@@ -94,7 +94,90 @@ const resolvers = {
       await helpers.verifyEmail(client, emailToken);
       return client;
     },
-    updateEmail: async (parent, { email }, context) => {},
+    updateEmail: async (parent, { email }, context) => {
+      if (context.user) {
+        const client = await Client.findById({ _id: context.headers.clientid });
+        if (client.email !== email) {
+          client = await Client.findByIdAndUpdate(
+            { _id: context.headers.clientid },
+            { $set: { email: email, verified: false } },
+            { new: true }
+          );
+          const emailToken = jwt.sign(
+            { _id: context.headers.clientid },
+            "alakazam934",
+            {
+              expiresIn: "24hr",
+            }
+          );
+          await helpers.verifyEmail(client, emailToken);
+          return client;
+        }
+        return client;
+      }
+      throw new AuthenticationError(
+        "You must be logged in to make changes to your account."
+      );
+    },
+    updatePhone: async (parent, { phone }, context) => {
+      if (context.user) {
+        const client = await Client.findByIdAndUpdate(
+          { _id: context.headers.clientid },
+          { $set: { phone: phone } },
+          { new: true }
+        );
+        return client;
+      }
+      throw new AuthenticationError(
+        "You must be logged in to make changes to your account."
+      );
+    },
+    updateCommMethod: async (parent, { commMethod }, context) => {
+      if (context.user) {
+        const client = await Client.findByIdAndUpdate(
+          { _id: context.headers.clientid },
+          { $set: { commMethod: commMethod } },
+          { new: true }
+        );
+        return client;
+      }
+      throw new AuthenticationError(
+        "You must be logged in to make changes to your account."
+      );
+    },
+    updateAddress: async (parent, { street, city, state, zip }, context) => {
+      if (context.user) {
+        const client = await Client.findByIdAndUpdate(
+          { _id: context.headers.clientid },
+          { $set: { street: street, city: city, state: state, zip: zip } },
+          { new: true }
+        );
+        return client;
+      }
+      throw new AuthenticationError(
+        "You must be logged in to make changes to your account."
+      );
+    },
+    updatePassword: async (parent, { password, newPassword }, context) => {
+      if (context.user) {
+        const client = await Client.findById({ _id: context.headers.clientid });
+
+        const correctPw = await client.isCorrectPassword(password);
+
+        if (!correctPw) {
+          throw new AuthenticationError("Incorrect password!");
+        }
+        client = await Client.findByIdAndUpdate(
+          { _id: context.headers.clientid },
+          { $set: { password: newPassword } },
+          { new: true }
+        );
+        return client;
+      }
+      throw new AuthenticationError(
+        "You must be logged in to make changes to your account."
+      );
+    },
   },
 };
 

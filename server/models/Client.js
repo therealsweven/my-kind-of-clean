@@ -100,6 +100,16 @@ clientSchema.pre("save", async function (next) {
 
   next();
 });
+clientSchema.pre(
+  ["updateOne", "findByIdAndUpdate", "findOneAndUpdate"],
+  async function (next) {
+    const data = this.getUpdate();
+    if (data.password) {
+      data.password = await bcrypt.hash(data.password, 10);
+    }
+    next();
+  }
+);
 
 // compare the incoming password with the hashed password
 clientSchema.methods.isCorrectPassword = async function (password) {

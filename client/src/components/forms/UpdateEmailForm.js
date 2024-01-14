@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import { useMutation } from "@apollo/client";
-import { CLIENT_LOGIN } from "../../utils/mutations";
+import { UPDATE_EMAIL } from "../../utils/mutations";
 import * as Yup from "yup";
 import { useNavigate } from "react-router-dom";
 import Auth from "../../utils/auth";
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function UpdateEmailForm() {
   const [showModal, setShowModal] = React.useState(false);
 
-  const [clientLogin, { error, data }] = useMutation(CLIENT_LOGIN);
+  const [updateEmail, { error, data }] = useMutation(UPDATE_EMAIL);
   const navigate = useNavigate();
   const initialValues = {
     email: "",
@@ -25,7 +25,7 @@ export default function UpdateEmailForm() {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       console.log(values);
-      const { data } = await clientLogin({
+      const { data } = await updateEmail({
         variables: {
           email: values.email,
         },
@@ -34,7 +34,6 @@ export default function UpdateEmailForm() {
       resetForm();
       console.log("submitted");
       setShowModal(false);
-      window.location.reload();
     } catch (err) {
       console.error(err);
     }
