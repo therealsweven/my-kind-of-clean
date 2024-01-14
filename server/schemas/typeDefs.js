@@ -127,6 +127,19 @@ const typeDefs = gql`
     clientLogin(email: String!, password: String!): Auth
     verifyEmail(clientId: ID!, emailToken: String!): Client
     sendVerificationLink(clientId: ID!): Client
+    updateEmail(email: String!): Client
+    updatePhone(phone: String!): Client
+    updateCommMethod(commMethod: String!): Client
+    updateAddress(
+      street: String!
+      city: String!
+      state: String!
+      zip: String!
+    ): Client
+    updatePassword(password: String!, newPassword: String!): Client
+    updateSubscribe(subscribe: Boolean!): Client
+    destroyAccount(password: String!): Client
+    resetPassword(email: String!): Client
   }
 `;
 

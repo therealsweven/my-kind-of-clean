@@ -94,6 +94,7 @@ const resolvers = {
       await helpers.verifyEmail(client, emailToken);
       return client;
     },
+    updateEmail: async (parent, { email }, context) => {},
   },
 };
 

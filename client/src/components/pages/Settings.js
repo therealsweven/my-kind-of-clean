@@ -8,6 +8,7 @@ import UpdateCommMethodForm from "../forms/UpdateCommMethodForm";
 import UpdateSubscribeForm from "../forms/UpdateSubscribeForm";
 import UpdateAddressForm from "../forms/UpdateAddressForm";
 import UpdatePasswordForm from "../forms/UpdatePasswordForm";
+import DestroyAccountForm from "../forms/DestroyAccountForm";
 import { SEND_VERIFICATION_LINK } from "../../utils/mutations";
 
 const Settings = () => {
@@ -117,6 +118,13 @@ const Settings = () => {
             <td className="py-6"></td>
             <td>
               <UpdatePasswordForm />
+            </td>
+          </tr>
+          <tr className="border-y border-secondary">
+            <th className="text-wrap">Delete Account</th>
+            <td className="py-6"></td>
+            <td>
+              <DestroyAccountForm />
             </td>
           </tr>
           <tr className="bg-primary">
