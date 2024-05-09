@@ -15,7 +15,7 @@ import ClientNavBar from "./components/ClientNavBar";
 import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
 import Quote from "./components/pages/Quote";
-import AdminHome from "./components/pages/AdminHome";
+import AdminHome from "./components/pages/admin/AdminHome";
 import Gallery from "./components/pages/Gallery";
 import Refer from "./components/pages/Refer";
 import Reviews from "./components/pages/Reviews";
@@ -26,6 +26,7 @@ import Scheduler from "./components/pages/Scheduler";
 import Settings from "./components/pages/Settings";
 import VerifyEmail from "./components/pages/VerifyEmail";
 import ReferLoggedIn from "./components/pages/ReferLoggedIn";
+import PastTransactions from "./components/pages/PastTransactions";
 import PrivacyPolicy from "./components/pages/PrivacyPolicy";
 import CookiePolicy from "./components/pages/CookiePolicy";
 import Terms from "./components/pages/Terms";
@@ -75,6 +76,10 @@ function App() {
             <Route path="/portal/scheduler" element={<Scheduler />} />
             <Route path="/portal/settings" element={<Settings />} />
             <Route path="/portal/referral" element={<ReferLoggedIn />} />
+            <Route
+              path="/portal/transactionHistory"
+              element={<PastTransactions />}
+            />
             <Route path="/privacyPolicy" element={<PrivacyPolicy />} />
             <Route path="/cookiePolicy" element={<CookiePolicy />} />
             <Route path="/terms" element={<Terms />} />

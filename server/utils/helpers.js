@@ -65,7 +65,7 @@ module.exports = {
       });
       const mailOptions = {
         from: "My Kind of Clean Support <support@mykindofclean.net>",
-        to: "<angelica@mykindofclean.net>",
+        to: "angelica@mykindofclean.net",
         subject: "New Cleaning Inquiry",
         text: `Name: ${info.name}
         Email: ${info.email}
@@ -168,7 +168,7 @@ module.exports = {
         service: "gmail",
         auth: {
           type: "OAuth2",
-          user: "info@denverdjservices.com",
+          user: "support@mykindofclean.net",
           clientId: process.env.CLIENT_ID,
           clientSecret: process.env.CLIENT_SECRET,
           refreshToken: process.env.REFRESH_TOKEN,
@@ -176,17 +176,17 @@ module.exports = {
         },
       });
       const mailOptions = {
-        from: "Denver DJ Services 🎵<info@denverdjservices.com>",
+        from: "My Kind of Clean <support@mykindofclean.net>",
         to: info.email,
-        subject: "Denver DJ Services - Recover Your Account",
+        subject: "Reset Your Password",
         text: `Hello ${info.first},
-        Your temporary password is '${tempPW}'.  Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, Denver DJ Services`,
+        Your temporary password is '${tempPW}'.  You may change your password in your account settings once logged in. Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, My Kind of Clean`,
         html: `<p>Hello ${info.first},</p>
         <p>Your temporary password is '<b>${tempPW}</b>'. 
-          Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day!</p>
+        You may change your password in your account settings once logged in. Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day!</p>
         <p>Best wishes,</p></br>
-        <p>Denver DJ Services🎵</p>
-        <p>(303) 815-7012</p>`,
+        <p>My Kind of Clean</p>
+        <p>(720) 846-3205</p>`,
       };
       const result = transporter.sendMail(mailOptions);
       console.log(result);

@@ -41,10 +41,10 @@ const Quote = () => {
               <h2 className="text-info text-2xl font-bold text-center">
                 Send us a message:
               </h2>
+              <div className="flex justify-center">
+                <QuoteForm className="w-1/2" />
+              </div>
             </div>
-          </div>
-          <div className="flex justify-center">
-            <QuoteForm className="w-1/2" />
           </div>
         </div>
         <div className="lg:w-1/2 sm:w-full md:w-full px-6">

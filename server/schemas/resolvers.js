@@ -8,6 +8,7 @@ const { Invoice } = require("../models/Invoice");
 
 const { signToken } = require("../utils/auth");
 const bcrypt = require("bcrypt");
+const { uuidv4 } = require("uuid");
 
 const resolvers = {
   Query: {
@@ -41,7 +42,8 @@ const resolvers = {
       const inquiry = await Inquiry.create(userInput);
       const email = await helpers.sendConfirmation(userInput);
       const email2 = await helpers.sendInfoToMe(userInput);
-      console.log(email, email2);
+      //console.log(email, email2);
+      console.log(email2);
       return inquiry;
     },
     // create a new client
@@ -65,9 +67,13 @@ const resolvers = {
       }
 
       const correctPw = await client.isCorrectPassword(password);
+      if (correctPw) {
+        console.log("correct:" + correctPw);
+      }
 
       if (!correctPw) {
         throw new AuthenticationError("Incorrect password!");
+        console.log("INCORRECT PASSWORD");
       }
       const token = signToken(client);
       return { token, client };
@@ -203,6 +209,18 @@ const resolvers = {
         await helpers.sendDeleteConfirmation(client);
         return client;
       }
+    },
+    resetPassword: async (parent, { email }) => {
+      const client = await Client.find({ email: email });
+      let tempPW = uuidv4();
+      console.log(tempPW);
+      helpers.sendTempPW(client, tempPW);
+      const saltRounds = 10;
+      tempPW = await bcrypt.hash(tempPW, saltRounds);
+      await Client.findByIdAndUpdate(
+        { _id: client._id },
+        { $set: { password: tempPW } }
+      );
     },
   },
 };

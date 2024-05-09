@@ -110,11 +110,16 @@ export default function ClientLoginForm() {
                           className="error"
                         />
                       </div>
+                      <div>
+                        <p className="text-info hover:underline">
+                          Forgot Password?
+                        </p>
+                      </div>
 
                       <div className="flex justify-between my-6 ">
                         <Link
                           to="/createAccount"
-                          className="text-s text-info hover:underline"
+                          className="text-lg text-info hover:underline"
                         >
                           Create Account
                         </Link>

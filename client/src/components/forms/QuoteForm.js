@@ -179,7 +179,7 @@ export default function QuoteForm() {
         </Formik>
       )}
       {successOpen && (
-        <p className="max-w-md my-6 text-lg">
+        <p className="max-w-md my-6 text-lg text-info">
           Thank you for reaching out! Please check your email for confirmation,
           and we will get back to you as soon as possible.
         </p>
