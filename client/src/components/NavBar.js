@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import ClientLoginForm from "./forms/ClientLoginForm";
+import headerLogo from "./images/textonly_nobuffer.png";
 //import { useQuery } from '@apollo/client';
 
 const NavBar = () => {
@@ -10,9 +11,9 @@ const NavBar = () => {
         <div className="flex-1">
           <Link
             to="/"
-            className="headerLogo btn btn-ghost p-3 font-bold text-info"
+            className="headerLogo btn btn-ghost p-3 font-bold text-info w-1/6"
           >
-            My Kind of Clean
+            <img src={headerLogo}></img>
           </Link>
         </div>
         <div className="flex-none">
