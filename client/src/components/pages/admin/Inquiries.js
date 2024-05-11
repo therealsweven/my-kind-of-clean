@@ -1,10 +1,11 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { QUERY_INQUIRIES } from "../../../utils/queries";
-//import { UPDATE_CLIENT } from "../../../utils/mutations";
-
+import { MARK_RESPONDED } from "../../../utils/mutations";
+import { DELETE_INQUIRY } from "../../../utils/mutations";
 export default function Inquiries() {
-  //const [updateClient] = useMutation(UPDATE_CLIENT);
+  const [markResponded] = useMutation(MARK_RESPONDED);
+  const [deleteInquiry] = useMutation(DELETE_INQUIRY);
   const { loading, data, error, refetch } = useQuery(QUERY_INQUIRIES, {
     onCompleted: (data) => console.log("Query completed:", data),
     onError: (error) => console.error("Query error:", error),
@@ -22,32 +23,32 @@ export default function Inquiries() {
   if (!loading) {
     console.log(inquiries);
 
-    // const markInquiryResponded = async (event) => {
-    //   console.log(event.target.id);
-    //   await markResponded({
-    //     variables: {
-    //       inquiryId: event.target.id,
-    //     },
-    //   });
-    //   refetch();
-    // };
-    // const markInquiryInactive = async (event) => {
-    //   console.log(event.target.id);
-    //   await deleteInquiry({
-    //     variables: {
-    //       inquiryId: event.target.id,
-    //     },
-    //   });
-    //   refetch();
-    // };
+    const markInquiryResponded = async (event) => {
+      console.log(event.target.id);
+      await markResponded({
+        variables: {
+          inquiryId: event.target.id,
+        },
+      });
+      refetch();
+    };
+    const markInquiryInactive = async (event) => {
+      console.log(event.target.id);
+      await deleteInquiry({
+        variables: {
+          inquiryId: event.target.id,
+        },
+      });
+      refetch();
+    };
 
     return (
       <>
         <h2>Inquiries</h2>
-        {/* <div className="flex flex-wrap ">
+        <div className="flex flex-wrap ">
           {inquiries.map((inquiry) => (
             <div
-              className="border border-accent rounded-lg bg-secondary m-2 p-3"
+              className="border border-accent rounded-lg bg-accent m-2 p-3"
               key={inquiry._id}
             >
               <p>
@@ -59,24 +60,27 @@ export default function Inquiries() {
                 {inquiry.name}
               </p>
               <p>
-                <b>Date of Event: </b>
-                {inquiry.date}
-              </p>
-              <p>
                 <b>Email: </b>
                 <a href={"mailto:" + inquiry.email}>{inquiry.email}</a>
               </p>
               <p>
                 <b>Phone: </b>
-                <a href={"tel:" + inquiry.phone}>{inquiry.phone}</a>
+                <a href={"tel:" + inquiry.phone} className="hover:text-info">
+                  {"(" +
+                    inquiry.phone.slice(0, 3) +
+                    ") " +
+                    inquiry.phone.slice(3, 6) +
+                    "-" +
+                    inquiry.phone.slice(6, 10)}
+                </a>
               </p>
               <p>
                 <b>Comm: </b>
                 {inquiry.commMethod}
               </p>
               <p>
-                <b>Package: </b>
-                {inquiry.package}
+                <b>Location: </b>
+                {inquiry.location}
               </p>
               <p>
                 <b>Message: </b> {inquiry.message}
@@ -91,7 +95,7 @@ export default function Inquiries() {
                 <button
                   id={inquiry._id}
                   className="btn border border-accent rounded-lg"
-                  // onClick={markInquiryResponded}
+                  onClick={markInquiryResponded}
                 >
                   Mark Responded
                 </button>
@@ -99,13 +103,13 @@ export default function Inquiries() {
               <button
                 id={inquiry._id}
                 className="btn border border-accent rounded-lg"
-                // onClick={markInquiryInactive}
+                onClick={markInquiryInactive}
               >
                 DELETE INQUIRY
               </button>
             </div>
           ))}
-        </div> */}
+        </div>
       </>
     );
   }

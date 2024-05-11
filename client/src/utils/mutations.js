@@ -157,6 +157,32 @@ const DESTROY_ACCOUNT = gql`
     }
   }
 `;
+const DELETE_INQUIRY = gql`
+  mutation DeleteInquiry($inquiryId: ID!) {
+    deleteInquiry(inquiryId: $inquiryId) {
+      _id
+    }
+  }
+`;
+// const ADMIN_LOGIN = gql`
+//   mutation Mutation($email: String!, $password: String!) {
+//     adminLogin(email: $email, password: $password) {
+//       _id
+//       email
+//       firstName
+//       lastName
+//       password
+//     }
+//   }
+// `;
+const MARK_RESPONDED = gql`
+  mutation MarkResponded($inquiryId: ID!) {
+    markResponded(inquiryId: $inquiryId) {
+      _id
+      active
+    }
+  }
+`;
 
 export {
   CREATE_INQUIRY,
@@ -171,4 +197,6 @@ export {
   UPDATE_PASSWORD,
   UPDATE_SUBSCRIBE,
   DESTROY_ACCOUNT,
+  DELETE_INQUIRY,
+  MARK_RESPONDED,
 };

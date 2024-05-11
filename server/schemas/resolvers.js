@@ -13,7 +13,7 @@ const { uuidv4 } = require("uuid");
 const resolvers = {
   Query: {
     inquiries: async () => {
-      return await Inquiry.find();
+      return await Inquiry.find({ active: true });
     },
     clientById: async (parent, userInput) => {
       return await Client.findById({ _id: userInput.clientId });
@@ -221,6 +221,24 @@ const resolvers = {
         { _id: client._id },
         { $set: { password: tempPW } }
       );
+    },
+    markResponded: async (parent, args) => {
+      console.log(args.inquiryId);
+      const inquiry = await Inquiry.findOneAndUpdate(
+        { _id: args.inquiryId },
+        { responded: true },
+        { new: true }
+      );
+      console.log(inquiry);
+    },
+    deleteInquiry: async (parent, args) => {
+      console.log(args.inquiryId);
+      const inquiry = await Inquiry.findOneAndUpdate(
+        { _id: args.inquiryId },
+        { active: false },
+        { new: true }
+      );
+      console.log(inquiry);
     },
   },
 };

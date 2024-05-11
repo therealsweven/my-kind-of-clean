@@ -140,6 +140,8 @@ const typeDefs = gql`
     updateSubscribe(subscribe: Boolean!): Client
     destroyAccount(password: String!): Client
     resetPassword(email: String!): Client
+    markResponded(inquiryId: ID!): Inquiry
+    deleteInquiry(inquiryId: ID!): Inquiry
   }
 `;
 

@@ -13,7 +13,7 @@ export default function AdminHome() {
 
   return (
     <>
-      <h1>ADMIN CONSOLE</h1>
+      <h1 className="text-2xl text-center">ADMIN CONSOLE</h1>
       <Inquiries />
     </>
   );
