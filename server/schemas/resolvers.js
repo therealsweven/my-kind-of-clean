@@ -15,6 +15,9 @@ const resolvers = {
     inquiries: async () => {
       return await Inquiry.find({ active: true });
     },
+    activeClients: async () => {
+      return await Client.find({ active: true });
+    },
     clientById: async (parent, userInput) => {
       return await Client.findById({ _id: userInput.clientId });
     },
@@ -50,6 +53,7 @@ const resolvers = {
     createClient: async (parent, userInput) => {
       userInput.quoted = false;
       userInput.verified = false;
+      userInput.active = true;
       const client = await Client.create(userInput);
       const emailToken = jwt.sign({ _id: client._id }, "alakazam934", {
         expiresIn: "24hr",

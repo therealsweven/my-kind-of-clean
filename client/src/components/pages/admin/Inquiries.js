@@ -61,11 +61,13 @@ export default function Inquiries() {
               </p>
               <p>
                 <b>Email: </b>
-                <a href={"mailto:" + inquiry.email}>{inquiry.email}</a>
+                <a className="hover:underline" href={"mailto:" + inquiry.email}>
+                  {inquiry.email}
+                </a>
               </p>
               <p>
                 <b>Phone: </b>
-                <a href={"tel:" + inquiry.phone} className="hover:text-info">
+                <a href={"tel:" + inquiry.phone} className="hover:underline">
                   {"(" +
                     inquiry.phone.slice(0, 3) +
                     ") " +

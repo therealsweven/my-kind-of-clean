@@ -16,7 +16,49 @@ const QUERY_INQUIRIES = gql`
     }
   }
 `;
-const QUERY_USER_BY_ID = gql`
+const QUERY_ACTIVE_CLIENTS = gql`
+  query ActiveClients {
+    activeClients {
+      _id
+      firstName
+      lastName
+      email
+      phone
+      street
+      city
+      state
+      zip
+      commMethod
+      quoted
+      properties {
+        city
+        name
+        quoted
+        state
+        street
+        street2
+        type
+        zip
+      }
+      cleanings {
+        _id
+        approved
+        date
+        endTime
+        invoice {
+          _id
+        }
+        notes
+        property {
+          _id
+        }
+        startTime
+      }
+      active
+    }
+  }
+`;
+const QUERY_CLIENT_BY_ID = gql`
   query Query($clientId: ID!) {
     clientById(clientId: $clientId) {
       _id
@@ -43,6 +85,7 @@ const QUERY_USER_BY_ID = gql`
       subscribe
       verified
       quoted
+      active
     }
   }
 `;
@@ -93,4 +136,4 @@ const QUERY_ME = gql`
   }
 `;
 
-export { QUERY_INQUIRIES, QUERY_USER_BY_ID, QUERY_ME };
+export { QUERY_INQUIRIES, QUERY_ACTIVE_CLIENTS, QUERY_CLIENT_BY_ID, QUERY_ME };

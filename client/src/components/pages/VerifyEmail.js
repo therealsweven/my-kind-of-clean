@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 //import { Link } from "react-router-dom";
 import { useMutation, useQuery } from "@apollo/client";
 import { VERIFY_EMAIL, SEND_VERIFICATION_LINK } from "../../utils/mutations";
-import { QUERY_USER_BY_ID } from "../../utils/queries";
+import { QUERY_CLIENT_BY_ID } from "../../utils/queries";
 
 const VerifyEmail = () => {
   const [isValidToken, setIsValidToken] = useState(false);
@@ -17,7 +17,7 @@ const VerifyEmail = () => {
   let { emailToken } = useParams();
 
   const { loading, data, error } = useQuery(
-    QUERY_USER_BY_ID,
+    QUERY_CLIENT_BY_ID,
     { variables: { clientId } },
     {
       onCompleted: (data) => console.log("Query completed:", data),

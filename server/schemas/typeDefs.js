@@ -23,6 +23,7 @@ const typeDefs = gql`
     quoted: Boolean
     properties: [Property]
     cleanings: [Cleaning]
+    active: Boolean
   }
 
   type Admin {
@@ -47,6 +48,7 @@ const typeDefs = gql`
   }
 
   type Property {
+    _id: ID!
     name: String
     street: String
     street2: String
@@ -92,6 +94,7 @@ const typeDefs = gql`
     me: Client
     meTest(clientId: ID!): Client
     inquiries: [Inquiry]!
+    activeClients: [Client]!
   }
 
   type Mutation {
