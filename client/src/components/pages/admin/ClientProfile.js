@@ -13,7 +13,7 @@ export default function ClientProfile() {
       onError: (error) => console.error("Query error:", error),
     }
   );
-  const client = data?.client || [];
+  const client = data?.clientById || [];
   console.log(data);
   if (loading) {
     return <h2>...loading</h2>;
@@ -23,6 +23,7 @@ export default function ClientProfile() {
   }
 
   if (!loading) {
+    console.log(client);
     return (
       <>
         <h2>{client.firstName}</h2>

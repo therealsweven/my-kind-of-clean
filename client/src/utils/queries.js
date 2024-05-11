@@ -59,7 +59,7 @@ const QUERY_ACTIVE_CLIENTS = gql`
   }
 `;
 const QUERY_CLIENT_BY_ID = gql`
-  query Query($clientId: ID!) {
+  query ClientById($clientId: ID!) {
     clientById(clientId: $clientId) {
       _id
       firstName
@@ -74,17 +74,41 @@ const QUERY_CLIENT_BY_ID = gql`
       invoices {
         _id
         amount
-        discount
-        dateOfClean
-        notes
-        active
-        depositPaid
         depositAmount
+        depositPaid
+        discount
+        notes
+        paid
       }
       commMethod
       subscribe
       verified
       quoted
+      properties {
+        _id
+        city
+        name
+        quoted
+        state
+        street
+        street2
+        type
+        zip
+      }
+      cleanings {
+        _id
+        approved
+        date
+        endTime
+        notes
+        property {
+          _id
+        }
+        startTime
+        invoice {
+          _id
+        }
+      }
       active
     }
   }

@@ -19,6 +19,7 @@ const resolvers = {
       return await Client.find({ active: true });
     },
     clientById: async (parent, userInput) => {
+      console.log(userInput);
       return await Client.findById({ _id: userInput.clientId });
     },
     me: async (parent, args, context) => {
