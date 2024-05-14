@@ -1,18 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import headerLogo from "./images/textonly_nobuffer.png";
 
 export default function Footer() {
   return (
     <footer className="footer items-center p-4 bg-accent text-neutral-content">
       <div className="items-center grid-flow-col">
-        <div className="flex-1">
-          <h1
+        <div className="flex-1 w-1/3">
+          <Link
             to="/"
-            className="headerLogo font-bold text-info my-3 mr-3"
-            style={{ "font-size": "large" }}
+            className="headerLogo btn btn-ghost p-3 font-bold text-info"
           >
-            My Kind of Clean
-          </h1>
+            <img src={headerLogo}></img>
+          </Link>
         </div>
         <p className="text-info font-bold text-l">
           Copyright © 2023 My Kind of Clean, LLC - All rights reserved

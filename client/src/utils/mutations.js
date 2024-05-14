@@ -81,10 +81,31 @@ const CREATE_CLIENT = gql`
   }
 `;
 const UPDATE_CLIENT = gql`
-  mutation UpdateClient($id: ID!) {
-    updateClient(_id: $id) {
+  mutation UpdateClient(
+    $clientId: ID!
+    $firstName: String
+    $lastName: String
+    $email: String
+    $phone: String
+    $street: String
+    $city: String
+    $state: String
+    $zip: String
+    $commMethod: String
+  ) {
+    updateClient(
+      clientId: $clientId
+      firstName: $firstName
+      lastName: $lastName
+      email: $email
+      phone: $phone
+      street: $street
+      city: $city
+      state: $state
+      zip: $zip
+      commMethod: $commMethod
+    ) {
       _id
-      active
       city
       commMethod
       email

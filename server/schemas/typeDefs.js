@@ -128,7 +128,7 @@ const typeDefs = gql`
       subscribe: Boolean
     ): Client
     updateClient(
-      _id: ID!
+      clientId: ID!
       firstName: String
       lastName: String
       email: String

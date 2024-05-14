@@ -113,6 +113,14 @@ const resolvers = {
       await helpers.verifyEmail(client, emailToken);
       return client;
     },
+    updateClient: async (parent, client, context) => {
+      console.log(client);
+      const newClient = await Client.findByIdAndUpdate(
+        { _id: client.clientId },
+        { $set: client },
+        { new: true }
+      );
+    },
     updateEmail: async (parent, { email }, context) => {
       if (context.user) {
         const client = await Client.findById({ _id: context.headers.clientid });

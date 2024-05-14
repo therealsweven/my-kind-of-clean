@@ -6,10 +6,15 @@ import { UPDATE_CLIENT } from "../../../../utils/mutations";
 import * as Yup from "yup";
 
 export default function UpdateClientForm({ client, close }) {
+  const clientId = client._id;
+  console.log(client._id);
   const [updateClient] = useMutation(UPDATE_CLIENT);
   // showing successful creation of client
   const [successOpen, setSuccessOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(true);
+  if (!client) {
+    return <div>Loading...</div>; // or handle the case where client is undefined
+  }
   function showSuccessMessage() {
     setSuccessOpen((successOpen) => !successOpen);
     setFormOpen((formOpen) => !formOpen);
@@ -22,6 +27,7 @@ export default function UpdateClientForm({ client, close }) {
   }
 
   const initialValues = {
+    clientId: clientId,
     firstName: client.firstName,
     lastName: client.lastName,
     email: client.email,
@@ -52,6 +58,7 @@ export default function UpdateClientForm({ client, close }) {
       console.log(values);
       await updateClient({
         variables: {
+          clientId: clientId,
           firstName: values.firstName,
           lastName: values.lastName,
           email: values.email,
@@ -86,7 +93,7 @@ export default function UpdateClientForm({ client, close }) {
               <div className="flex justify-end">
                 <button onClick={close}>Close</button>
               </div>
-              <h2 className="text-2xl">Update Contact Information</h2>
+              <h2 className="text-2xl">Update Client Information</h2>
               <div className="flex flex-wrap justify-evenly">
                 {/* First Name */}
                 <div className="form-control w-1/2">
@@ -289,24 +296,6 @@ export default function UpdateClientForm({ client, close }) {
                   <ErrorMessage name="zip" component="div" className="error" />
                 </div>
               </div>
-              {/* <div className="">
-                <span className="label-text text-l flex ">
-                  <Field
-                    className="input input-bordered m-1"
-                    type="checkbox"
-                    name="subcribe"
-                  />
-                  <label className="label" htmlFor="subcribe">
-                    I wish to unsubscribe from all future promotional emails,
-                    newsletters, etc.
-                  </label>
-                </span>
-                <ErrorMessage
-                  name="subscribe"
-                  component="div"
-                  className="error"
-                />
-              </div> */}
               {/* Submit */}
               <div className="form-control mt-6">
                 <button
