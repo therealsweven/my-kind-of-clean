@@ -80,6 +80,23 @@ const CREATE_CLIENT = gql`
     }
   }
 `;
+const UPDATE_CLIENT = gql`
+  mutation UpdateClient($id: ID!) {
+    updateClient(_id: $id) {
+      _id
+      active
+      city
+      commMethod
+      email
+      firstName
+      lastName
+      phone
+      state
+      street
+      zip
+    }
+  }
+`;
 const VERIFY_EMAIL = gql`
   mutation Mutation($clientId: ID!, $emailToken: String!) {
     verifyEmail(clientId: $clientId, emailToken: $emailToken) {
@@ -188,6 +205,7 @@ export {
   CREATE_INQUIRY,
   CLIENT_LOGIN,
   CREATE_CLIENT,
+  UPDATE_CLIENT,
   VERIFY_EMAIL,
   SEND_VERIFICATION_LINK,
   UPDATE_EMAIL,

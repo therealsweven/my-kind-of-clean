@@ -8,7 +8,7 @@ const { Invoice } = require("../models/Invoice");
 
 const { signToken } = require("../utils/auth");
 const bcrypt = require("bcrypt");
-const { uuidv4 } = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 
 const resolvers = {
   Query: {
@@ -55,6 +55,13 @@ const resolvers = {
       userInput.quoted = false;
       userInput.verified = false;
       userInput.active = true;
+      if (userInput.password === "password") {
+        let tempPW = uuidv4();
+        helpers.sendTempPW(userInput, tempPW);
+        const saltRounds = 10;
+        tempPW = await bcrypt.hash(tempPW, saltRounds);
+        userInput.password = tempPW;
+      }
       const client = await Client.create(userInput);
       const emailToken = jwt.sign({ _id: client._id }, "alakazam934", {
         expiresIn: "24hr",

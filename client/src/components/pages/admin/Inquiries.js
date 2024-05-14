@@ -44,7 +44,7 @@ export default function Inquiries() {
 
     return (
       <>
-        <h2>Inquiries</h2>
+        <h2 className="my-3 text-center text-2xl">Inquiries</h2>
         <div className="flex flex-wrap ">
           {inquiries.map((inquiry) => (
             <div

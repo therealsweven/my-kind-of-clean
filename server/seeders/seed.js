@@ -3,8 +3,9 @@ require("bcrypt");
 const db = require("../config/connection");
 const { Admin } = require("../models/Admin.js");
 const { Client } = require("../models/Client.js");
-const { Inquiry } = rquire("../models/Inquiry.js");
+const { Inquiry } = require("../models/Inquiry.js");
 const clientSeeds = require("./clients.json");
+const inquirySeeds = require("./inquiries.json");
 
 const adminSeeds = {
   firstName: "Angelica",

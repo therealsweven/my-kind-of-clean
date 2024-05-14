@@ -179,9 +179,9 @@ module.exports = {
         from: "My Kind of Clean <support@mykindofclean.net>",
         to: info.email,
         subject: "Reset Your Password",
-        text: `Hello ${info.first},
+        text: `Hello ${info.firstName},
         Your temporary password is '${tempPW}'.  You may change your password in your account settings once logged in. Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, My Kind of Clean`,
-        html: `<p>Hello ${info.first},</p>
+        html: `<p>Hello ${info.firstName},</p>
         <p>Your temporary password is '<b>${tempPW}</b>'. 
         You may change your password in your account settings once logged in. Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day!</p>
         <p>Best wishes,</p></br>

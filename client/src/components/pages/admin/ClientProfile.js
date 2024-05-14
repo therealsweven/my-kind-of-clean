@@ -2,6 +2,7 @@ import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { useParams, Link } from "react-router-dom";
 import { QUERY_CLIENT_BY_ID } from "../../../utils/queries";
+import UpdateClientForm from "./forms/UpdateClientForm";
 export default function ClientProfile() {
   let { clientId } = useParams();
 
@@ -76,6 +77,7 @@ export default function ClientProfile() {
             </tr>
           </table>
         </div>
+        <UpdateClientForm client={client} />
       </>
     );
   }

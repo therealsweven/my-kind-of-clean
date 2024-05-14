@@ -127,6 +127,19 @@ const typeDefs = gql`
       commMethod: String
       subscribe: Boolean
     ): Client
+    updateClient(
+      _id: ID!
+      firstName: String
+      lastName: String
+      email: String
+      phone: String
+      street: String
+      city: String
+      state: String
+      zip: String
+      commMethod: String
+      active: Boolean
+    ): Client
     clientLogin(email: String!, password: String!): Auth
     verifyEmail(clientId: ID!, emailToken: String!): Client
     sendVerificationLink(clientId: ID!): Client
