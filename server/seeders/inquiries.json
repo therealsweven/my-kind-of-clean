@@ -1,0 +1,102 @@
+[
+	{
+		"name": "Venus Mejia",
+		"email": "nunc@protonmail.edu",
+		"phone": "S543598181",
+		"location": "40871",
+		"message": "convallis convallis dolor. Quisque tincidunt pede ac urna. Ut tincidunt vehicula risus. Nulla eget metus eu",
+		"commMethod": "laoreet",
+		"responded": false,
+		"active": true
+	},
+	{
+		"name": "Aphrodite Burke",
+		"email": "in.mi@hotmail.net",
+		"phone": "H113361379",
+		"location": "678112",
+		"message": "augue, eu tempor erat neque non quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam fringilla cursus purus.",
+		"commMethod": "Mauris",
+		"responded": false,
+		"active": true
+	},
+	{
+		"name": "Zelenia Wynn",
+		"email": "nec@yahoo.edu",
+		"phone": "Z721056346",
+		"location": "42175",
+		"message": "turpis non enim. Mauris quis turpis vitae purus gravida sagittis. Duis gravida. Praesent eu nulla at sem molestie",
+		"commMethod": "Sed",
+		"responded": false,
+		"active": true
+	},
+	{
+		"name": "Willow Jenkins",
+		"email": "consectetuer.adipiscing@protonmail.couk",
+		"phone": "W388541618",
+		"location": "486629",
+		"message": "libero. Integer in magna. Phasellus dolor elit, pellentesque a, facilisis non, bibendum sed, est. Nunc laoreet lectus quis massa. Mauris vestibulum, neque sed dictum eleifend, nunc risus varius orci, in consequat enim diam vel arcu. Curabitur ut odio vel est tempor bibendum. Donec felis orci, adipiscing non, luctus",
+		"commMethod": "Fusce",
+		"responded": true,
+		"active": true
+	},
+	{
+		"name": "Dorothy Marquez",
+		"email": "auctor.velit.eget@protonmail.ca",
+		"phone": "O584274727",
+		"location": "8015",
+		"message": "Mauris magna. Duis dignissim tempor arcu. Vestibulum ut eros non enim commodo hendrerit. Donec porttitor tellus non magna. Nam ligula elit, pretium et, rutrum non, hendrerit id, ante. Nunc mauris sapien, cursus in, hendrerit consectetuer, cursus et, magna. Praesent",
+		"commMethod": "adipiscing",
+		"responded": true,
+		"active": true
+	},
+	{
+		"name": "Hyacinth Page",
+		"email": "consectetuer@protonmail.couk",
+		"phone": "T959867851",
+		"location": "36926",
+		"message": "Aliquam nec enim. Nunc ut erat. Sed nunc est, mollis non, cursus non, egestas a, dui. Cras pellentesque. Sed dictum. Proin eget odio. Aliquam vulputate ullamcorper magna. Sed eu eros. Nam consequat dolor vitae dolor. Donec fringilla. Donec feugiat metus sit amet",
+		"commMethod": "faucibus",
+		"responded": true,
+		"active": true
+	},
+	{
+		"name": "Tamara Coleman",
+		"email": "metus.aenean@google.ca",
+		"phone": "S477346497",
+		"location": "53762",
+		"message": "volutpat ornare, facilisis eget, ipsum. Donec sollicitudin adipiscing ligula. Aenean gravida nunc sed pede. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit dui,",
+		"commMethod": "nisi",
+		"responded": false,
+		"active": true
+	},
+	{
+		"name": "Yvonne Madden",
+		"email": "natoque.penatibus@aol.net",
+		"phone": "E883582877",
+		"location": "513536",
+		"message": "In at pede. Cras vulputate velit eu sem. Pellentesque ut ipsum ac mi eleifend egestas. Sed",
+		"commMethod": "quam",
+		"responded": false,
+		"active": true
+	},
+	{
+		"name": "Zenia Mcknight",
+		"email": "malesuada.id@google.com",
+		"phone": "Y304787365",
+		"location": "1826",
+		"message": "et magnis dis parturient montes, nascetur ridiculus mus. Proin vel arcu eu odio tristique pharetra. Quisque ac libero nec ligula consectetuer rhoncus. Nullam velit",
+		"commMethod": "consequat",
+		"responded": true,
+		"active": true
+	},
+	{
+		"name": "Katell Walter",
+		"email": "semper.pretium@google.com",
+		"phone": "M378423511",
+		"location": "291423",
+		"message": "dis parturient montes, nascetur ridiculus mus. Aenean eget magna. Suspendisse tristique neque venenatis lacus. Etiam bibendum fermentum metus. Aenean sed pede nec ante blandit viverra. Donec tempus, lorem fringilla ornare placerat, orci lacus vestibulum",
+		"commMethod": "auctor",
+		"responded": true,
+		"active": true
+	}
+]
