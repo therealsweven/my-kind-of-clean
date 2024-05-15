@@ -45,10 +45,10 @@ export default function Inquiries() {
     return (
       <>
         <h2 className="my-3 text-center text-2xl">Inquiries</h2>
-        <div className="flex flex-wrap ">
+        <div className="flex flex-wrap justify-center">
           {inquiries.map((inquiry) => (
             <div
-              className="border border-accent rounded-lg bg-accent m-2 p-3"
+              className="border border-accent rounded-lg bg-accent m-2 p-3 max-w-xl"
               key={inquiry._id}
             >
               <p>

@@ -80,7 +80,7 @@ export default function UpdateClientForm({ client, close }) {
   };
 
   return (
-    <div className="bg-base-100 p-10 min-w-[50%] rounded-lg m-6 border border-accent">
+    <div className="bg-accent p-10 min-w-[50%] rounded-lg m-6 border border-white">
       {formOpen && (
         <Formik
           id="createClientForm"

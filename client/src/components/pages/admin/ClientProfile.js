@@ -42,78 +42,80 @@ export default function ClientProfile() {
         <Link to="/admin/clients" className="btn btn-sm mt-6 ml-6">
           Back
         </Link>
-        <h1 className="text-2xl text-center">
+        <h1 className="text-3xl text-center">
           {client.firstName + " " + client.lastName}
         </h1>
-        <div id="personalDetails border-bottom">
-          <div className="flex justify-between p-5 px-24">
-            <h2 className="text-xl">Personal Details</h2>
-            <button
-              id="updateClientBtn"
-              className="btn btn-sm"
-              onClick={() => showUpdateClientForm(true)}
-            >
-              Edit
-            </button>
+        <h2 className="text-xl text-center mt-4">Personal Details</h2>
+        {!openUpdateClientForm && (
+          <div id="clientInfo">
+            <div className="flex justify-end p-5 px-24">
+              <button
+                id="updateClientBtn"
+                className="btn btn-sm"
+                onClick={() => showUpdateClientForm(true)}
+              >
+                Edit
+              </button>
+            </div>
+            <div className="flex justify-center">
+              <table className="bg-accent w-11/12 text-center mb-6">
+                <tbody>
+                  <tr>
+                    <td className="py-6">First </td>
+                    <td className="px-3">{client.firstName}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-6">Last </td>
+                    <td className="px-3">{client.lastName}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-6">Email </td>
+                    <td>
+                      <a
+                        className="hover:underline px-3"
+                        href={"mailto:" + client.email}
+                      >
+                        {client.email}
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-6">Phone </td>
+                    <td>
+                      <a
+                        href={"tel:" + client.phone}
+                        className="hover:underline px-3"
+                      >
+                        {"(" +
+                          client.phone.slice(0, 3) +
+                          ") " +
+                          client.phone.slice(3, 6) +
+                          "-" +
+                          client.phone.slice(6, 10)}
+                      </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="py-6">Preffered Comm Method</td>
+                    <td className="px-3">{client.commMethod}</td>
+                  </tr>
+                  <tr>
+                    <td className="py-6">Address</td>
+                    <td>
+                      <div className="px-3">
+                        <p>{client.street}</p>
+                        {client.street2 ? <p>{client.street2}</p> : <></>}
+                        <p>
+                          {client.city + ", " + client.state + " " + client.zip}
+                        </p>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="flex justify-center">
-            <table className="bg-accent w-11/12 text-center mb-6">
-              <tbody>
-                <tr>
-                  <td className="py-6">First </td>
-                  <td className="px-3">{client.firstName}</td>
-                </tr>
-                <tr>
-                  <td className="py-6">Last </td>
-                  <td className="px-3">{client.lastName}</td>
-                </tr>
-                <tr>
-                  <td className="py-6">Email </td>
-                  <td>
-                    <a
-                      className="hover:underline px-3"
-                      href={"mailto:" + client.email}
-                    >
-                      {client.email}
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-6">Phone </td>
-                  <td>
-                    <a
-                      href={"tel:" + client.phone}
-                      className="hover:underline px-3"
-                    >
-                      {"(" +
-                        client.phone.slice(0, 3) +
-                        ") " +
-                        client.phone.slice(3, 6) +
-                        "-" +
-                        client.phone.slice(6, 10)}
-                    </a>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="py-6">Preffered Comm Method</td>
-                  <td className="px-3">{client.commMethod}</td>
-                </tr>
-                <tr>
-                  <td className="py-6">Address</td>
-                  <td>
-                    <div className="px-3">
-                      <p>{client.street}</p>
-                      {client.street2 ? <p>{client.street2}</p> : <></>}
-                      <p>
-                        {client.city + ", " + client.state + " " + client.zip}
-                      </p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+        )}
         {/* Update Client Form */}
         {openUpdateClientForm && (
           <UpdateClientForm client={client} close={closeUpdateClientForm} />
