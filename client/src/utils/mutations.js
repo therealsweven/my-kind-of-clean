@@ -25,6 +25,59 @@ const CREATE_INQUIRY = gql`
     }
   }
 `;
+const CREATE_INVOICE = gql`
+  mutation CreateInvoice(
+    $client: ID!
+    $cleaning: ID!
+    $services: String!
+    $amount: Int
+    $discount: Int
+    $dateOfCleaning: String
+    $notes: String
+    $paid: Boolean
+    $paymentMethod: String
+    $deposit: Boolean
+    $depositPaid: Boolean
+    $depositAmount: Int
+    $depositPaymentMethod: String
+  ) {
+    createInvoice(
+      client: $client
+      cleaning: $cleaning
+      services: $services
+      amount: $amount
+      discount: $discount
+      dateOfCleaning: $dateOfCleaning
+      notes: $notes
+      paid: $paid
+      paymentMethod: $paymentMethod
+      deposit: $deposit
+      depositPaid: $depositPaid
+      depositAmount: $depositAmount
+      depositPaymentMethod: $depositPaymentMethod
+    ) {
+      _id
+      client {
+        _id
+      }
+      services
+      amount
+      discount
+      cleaning {
+        _id
+      }
+      dateOfCleaning
+      notes
+      paid
+      paymentMethod
+      deposit
+      depositPaid
+      depositAmount
+      depositPaymentMethod
+      createdAt
+    }
+  }
+`;
 const CLIENT_LOGIN = gql`
   mutation ClientLogin($email: String!, $password: String!) {
     clientLogin(email: $email, password: $password) {
@@ -224,6 +277,7 @@ const MARK_RESPONDED = gql`
 
 export {
   CREATE_INQUIRY,
+  CREATE_INVOICE,
   CLIENT_LOGIN,
   CREATE_CLIENT,
   UPDATE_CLIENT,
