@@ -38,9 +38,10 @@
 }
 
 .headerLogo {
-  font-family: "Great Vibes", cursive;
-  text-transform: capitalize;
-  font-size: xx-large;
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: auto;
+  font-style: normal;
 }
 #slogan {
   font-family: "Dancing Script", cursive;

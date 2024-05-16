@@ -15,8 +15,9 @@ import ClientNavBar from "./components/ClientNavBar";
 import AdminNavBar from "./components/pages/admin/AdminNavBar";
 import Footer from "./components/Footer";
 import Home from "./components/pages/Home";
-import Quote from "./components/pages/Quote";
+import Contact from "./components/pages/Contact";
 import AdminHome from "./components/pages/admin/AdminNavBar";
+import About from "./components/pages/About";
 import Gallery from "./components/pages/Gallery";
 import Refer from "./components/pages/Refer";
 import Reviews from "./components/pages/Reviews";
@@ -37,6 +38,7 @@ import Billing from "./components/pages/admin/Billing";
 import Clients from "./components/pages/admin/Clients";
 import ClientProfile from "./components/pages/admin/ClientProfile";
 import AdminSettings from "./components/pages/admin/AdminSettings";
+import Services from "./components/pages/Services";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -68,13 +70,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         {Auth.loggedIn() ? <ClientNavBar /> : <NavBar />}
-        <AdminNavBar />
+        {/* <AdminNavBar /> */}
 
         <div>
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/quote" element={<Quote />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/admin" element={<AdminHome />} />
+            <Route path="/about" element={<About />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/reviews" element={<Reviews />} />
             <Route path="/referral" element={<Refer />} />

@@ -7,7 +7,13 @@ export default function AdminNavBar() {
   // const [path,setPath] = document.location.pathname;
   return (
     <>
-      <div className="flex justify-between">
+      <div
+        className="flex justify-between border-b"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1585933646706-7b629be871aa?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+        }}
+      >
         {/* {path === "/admin/inquiries" ? (
           <Link
             to="/admin/inquiries"
@@ -18,32 +24,32 @@ export default function AdminNavBar() {
         ) : ( */}
         <Link
           to="/admin/inquiries"
-          className="bg-accent border border-primary p-2 w-full text-center"
+          className="p-2 w-full text-center hover:bg-accent hover:bg-opacity-30"
         >
           Inquiries
         </Link>
         {/* )} */}
         <Link
           to="/admin/scheduling"
-          className="bg-accent border border-primary p-2 w-full text-center"
+          className="p-2 w-full text-center hover:bg-accent hover:bg-opacity-30"
         >
           Scheduling
         </Link>
         <Link
           to="/admin/billing"
-          className="bg-accent border border-primary p-2 w-full text-center"
+          className="p-2 w-full text-center hover:bg-accent hover:bg-opacity-30"
         >
           Billing
         </Link>
         <Link
           to="/admin/clients"
-          className="bg-accent border border-primary p-2 w-full text-center"
+          className="p-2 w-full text-center hover:bg-accent hover:bg-opacity-30"
         >
           Clients
         </Link>
         <Link
           to="/admin/settings"
-          className="bg-accent border border-primary p-2 w-full text-center"
+          className="p-2 w-full text-center hover:bg-accent hover:bg-opacity-30"
         >
           Settings
         </Link>

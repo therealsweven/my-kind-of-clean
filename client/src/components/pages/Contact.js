@@ -5,11 +5,17 @@ import QuoteForm from "../forms/QuoteForm";
 import { useEffect } from "react";
 import { ElfsightWidget } from "react-elfsight-widget";
 
-const Quote = () => {
+const Contact = () => {
   return (
     <>
-      <h1 className="text-info text-3xl my-3 text-center">
-        GET A FREE QUOTE TODAY
+      <h1
+        className="text-info text-4xl py-3 text-center border-b-2"
+        style={{
+          backgroundImage:
+            "url(https://images.unsplash.com/photo-1585933646706-7b629be871aa?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+        }}
+      >
+        Contact
       </h1>
       <div className="flex flex-wrap justify-center align-middle">
         <div className="lg:w-1/2">
@@ -59,4 +65,4 @@ const Quote = () => {
   );
 };
 
-export default Quote;
+export default Contact;

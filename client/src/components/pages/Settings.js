@@ -43,12 +43,20 @@ const Settings = () => {
 
     return (
       <>
-        <h1 className="text-info text-3xl my-3 text-center font-bold">
+        <h1
+          className="text-info text-3xl py-3 text-center font-bold bg-black"
+          style={{
+            backgroundImage:
+              "url(https://images.unsplash.com/photo-1585933646706-7b629be871aa?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+          }}
+        >
           Account Manager
         </h1>
-        <table className="table-auto bg-info w-full">
+        <table className="table-auto bg-info w-full text-black">
           <tr className=" bg-primary">
-            <h2 className=" text-xl font-bold py-3 ml-12">Personal Details</h2>
+            <h2 className=" text-xl font-bold py-3 ml-12 text-white">
+              Personal Details
+            </h2>
             <td> </td>
             <td> </td>
           </tr>
@@ -109,7 +117,9 @@ const Settings = () => {
             </td>
           </tr>
           <tr className="bg-primary">
-            <h2 className=" text-xl font-bold py-3 ml-12">Account Security</h2>
+            <h2 className=" text-xl font-bold py-3 ml-12 text-white">
+              Account Security
+            </h2>
             <td> </td>
             <td className="p-2"></td>
           </tr>
@@ -128,7 +138,9 @@ const Settings = () => {
             </td>
           </tr>
           <tr className="bg-primary">
-            <h2 className=" text-xl font-bold py-3 ml-12">Email Preferences</h2>
+            <h2 className=" text-xl font-bold py-3 ml-12 text-white">
+              Email Preferences
+            </h2>
             <td> </td>
             <td> </td>
           </tr>
@@ -153,7 +165,9 @@ const Settings = () => {
             </td>
           </tr>
           <tr className="bg-primary">
-            <h2 className=" text-xl font-bold py-3 ml-12">Legal Policies</h2>
+            <h2 className=" text-xl font-bold py-3 ml-12 text-white">
+              Legal Policies
+            </h2>
             <td> </td>
             <td> </td>
           </tr>

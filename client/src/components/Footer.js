@@ -1,11 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import headerLogo from "./images/textonly_nobuffer.png";
-
+import headerLogo from "./images/textonly_nobuffer_pixian_ai.png";
+import headerIcon from "./images/icononly_transparent_nobuffer.png";
 export default function Footer() {
   return (
-    <footer className="footer items-center p-4 bg-accent text-neutral-content">
+    <footer
+      className="footer items-center p-4 text-neutral-content"
+      style={{
+        backgroundImage:
+          "url(https://images.unsplash.com/photo-1585933646706-7b629be871aa?q=80&w=2942&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)",
+      }}
+    >
       <div className="items-center grid-flow-col">
+        <img src={headerIcon} className="h-8"></img>
         <div className="flex-1 w-1/3">
           <Link
             to="/"

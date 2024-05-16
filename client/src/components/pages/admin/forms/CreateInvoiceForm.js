@@ -48,7 +48,7 @@ export default function CreateInvoiceForm() {
     cleaning: Yup.string(),
     amount: Yup.number().required("This field is required"),
     discount: Yup.number(),
-    services: Yup.string(),
+    services: Yup.string().required("This fiel id required"),
     notes: Yup.string(),
     paid: Yup.bool().required("This field is required"),
     paymentMethod: Yup.string(),
@@ -185,31 +185,21 @@ export default function CreateInvoiceForm() {
                   <p className="text-s">(Optional)</p>
                 </div>
 
-                {/* Services specification if applicable */}
+                {/* Services provided to be put on invoice */}
                 <div className="form-control">
                   <label className="label" htmlFor="services">
-                    <span className="label-text text-xl ">services</span>
+                    <span className="label-text text-xl ">Services</span>
                   </label>
                   <Field
-                    name="Services"
-                    as="select"
+                    name="services"
+                    type="text"
                     className="input input-bordered"
-                  >
-                    <option value=""></option>
-                    <option value="Wedding Ceremony">Wedding Ceremony</option>
-                    <option value="Wedding Reception">Wedding Reception</option>
-                    <option value="Wedding Bundle">Wedding Bundle</option>
-                    <option value="School/Corporate Event">
-                      School/Corporate Event
-                    </option>
-                    <option value="Private Event">Private Event</option>
-                  </Field>
+                  />
                   <ErrorMessage
                     name="services"
                     component="div"
                     className="error"
                   />
-                  <p className="text-s">(Optional)</p>
                 </div>
                 {/* Notes */}
                 <div className="form-control">
