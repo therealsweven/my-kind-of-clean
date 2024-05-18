@@ -35,9 +35,9 @@ const Services = () => {
                     Need a one time deep clean or a regular scheduled cleaning?
                     We are here to serve you.
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -63,9 +63,9 @@ const Services = () => {
                     A freshly remodeled space should look shiny and new. We’ll
                     make your site sparkle and shine!
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -91,9 +91,9 @@ const Services = () => {
                     Whether you have a retail store, restaurant, office, studio,
                     house of worship or an auto shop you can count on us.
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -119,9 +119,9 @@ const Services = () => {
                     Let us take the stress of keeping up with your Air BnB off
                     your shoulders!
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -147,9 +147,9 @@ const Services = () => {
                     When you are ready to market your house we will be ready to
                     clean it.
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
@@ -175,9 +175,9 @@ const Services = () => {
                     We are dedicated to helping you get your car, RV,
                     motorcycle, boat, and any other motorized toy detailed!
                   </p>
-                  <button className="btn btn-base-100 btn-sm mb-3">
+                  {/* <button className="btn btn-base-100 btn-sm mb-3">
                     Inquire
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
