@@ -36,7 +36,7 @@ const Services = () => {
                     We are here to serve you.
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>
@@ -64,7 +64,7 @@ const Services = () => {
                     make your site sparkle and shine!
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>
@@ -92,7 +92,7 @@ const Services = () => {
                     house of worship or an auto shop you can count on us.
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>
@@ -120,7 +120,7 @@ const Services = () => {
                     your shoulders!
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>
@@ -148,7 +148,7 @@ const Services = () => {
                     clean it.
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>
@@ -176,7 +176,7 @@ const Services = () => {
                     motorcycle, boat, and any other motorized toy detailed!
                   </p>
                   <button className="btn btn-base-100 btn-sm mb-3">
-                    Get Started
+                    Inquire
                   </button>
                 </div>
               </div>

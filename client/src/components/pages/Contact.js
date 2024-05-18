@@ -53,13 +53,13 @@ const Contact = () => {
             </div>
           </div>
         </div>
-        <div className="lg:w-1/2 sm:w-full md:w-full px-6">
-          <ElfsightWidget widgetID="ab084af9-3d1d-4b48-913c-d4cc294715e5" />
-          {/* <div
+        {/* <div className="lg:w-1/2 sm:w-full md:w-full px-6"> */}
+        {/* <ElfsightWidget widgetID="ab084af9-3d1d-4b48-913c-d4cc294715e5" /> */}
+        {/* <div
             className="elfsight-app-ab084af9-3d1d-4b48-913c-d4cc294715e5 w-full"
             data-elfsight-app-lazy
           ></div> */}
-        </div>
+        {/* </div> */}
       </div>
     </>
   );

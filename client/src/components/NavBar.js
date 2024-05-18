@@ -60,9 +60,9 @@ const NavBar = () => {
                       Refer a Friend
                     </Link>
                   </li>
-                  <li className="flex justify-center">
+                  {/* <li className="flex justify-center">
                     <ClientLoginForm />
-                  </li>
+                  </li> */}
                 </ul>
               </details>
             </li>
