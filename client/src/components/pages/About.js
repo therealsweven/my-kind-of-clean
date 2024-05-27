@@ -65,7 +65,7 @@ const About = () => {
         <div className="flex flex-col justify-center px-8">
           <img
             className="rounded-full"
-            src="https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/441312089_979466587521789_8280812821867300159_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=FgB_mxuWrmQQ7kNvgG3w0ld&_nc_ht=scontent-den2-1.xx&oh=00_AYCkZaNRnUMP8M_HuKM7-eoOABTWDrVsYmzEJOI1X_i8hg&oe=664BDE36"
+            src="https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/441312089_979466587521789_8280812821867300159_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LeCjojqeRM0Q7kNvgHl-36G&_nc_ht=scontent-den2-1.xx&oh=00_AYCci169gxZ2caclkkSCozqY1ivNXyje3f07y-I1spXi7w&oe=6657BBB6https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/441312089_979466587521789_8280812821867300159_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LeCjojqeRM0Q7kNvgHl-36G&_nc_ht=scontent-den2-1.xx&oh=00_AYCci169gxZ2caclkkSCozqY1ivNXyje3f07y-I1spXi7w&oe=6657BBB6"
           ></img>
         </div>
       </div>

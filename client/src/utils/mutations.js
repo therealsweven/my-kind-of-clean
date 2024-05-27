@@ -28,9 +28,9 @@ const CREATE_INQUIRY = gql`
 const CREATE_INVOICE = gql`
   mutation CreateInvoice(
     $client: ID!
-    $cleaning: ID!
     $services: String!
     $amount: Int
+    $cleaning: ID
     $discount: Int
     $dateOfCleaning: String
     $notes: String
@@ -43,9 +43,9 @@ const CREATE_INVOICE = gql`
   ) {
     createInvoice(
       client: $client
-      cleaning: $cleaning
       services: $services
       amount: $amount
+      cleaning: $cleaning
       discount: $discount
       dateOfCleaning: $dateOfCleaning
       notes: $notes
@@ -57,24 +57,6 @@ const CREATE_INVOICE = gql`
       depositPaymentMethod: $depositPaymentMethod
     ) {
       _id
-      client {
-        _id
-      }
-      services
-      amount
-      discount
-      cleaning {
-        _id
-      }
-      dateOfCleaning
-      notes
-      paid
-      paymentMethod
-      deposit
-      depositPaid
-      depositAmount
-      depositPaymentMethod
-      createdAt
     }
   }
 `;
@@ -159,15 +141,6 @@ const UPDATE_CLIENT = gql`
       commMethod: $commMethod
     ) {
       _id
-      city
-      commMethod
-      email
-      firstName
-      lastName
-      phone
-      state
-      street
-      zip
     }
   }
 `;

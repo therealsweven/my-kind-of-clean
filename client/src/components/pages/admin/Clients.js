@@ -20,6 +20,9 @@ export default function Clients() {
 
   if (!loading) {
     console.log(clients);
+    const clientsFirstAscending = [...clients].sort((a, b) =>
+      a.firstName > b.firstName ? 1 : -1
+    );
 
     return (
       <>
@@ -37,7 +40,7 @@ export default function Clients() {
                 </tr>
               </thead>
               <tbody>
-                {clients.map((client) => (
+                {clientsFirstAscending.map((client) => (
                   <tr key={client._id}>
                     <td className="text-center">{client.firstName}</td>
                     <td className="text-center">{client.lastName}</td>

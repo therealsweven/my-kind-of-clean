@@ -70,7 +70,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         {Auth.loggedIn() ? <ClientNavBar /> : <NavBar />}
-        {/* <AdminNavBar /> */}
+        <AdminNavBar />
 
         <div>
           <Routes>

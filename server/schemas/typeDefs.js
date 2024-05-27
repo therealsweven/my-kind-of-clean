@@ -79,7 +79,7 @@ const typeDefs = gql`
     notes: String
     paid: Boolean
     paymentMethod: String
-    dposit: Boolean
+    deposit: Boolean
     depositPaid: Boolean
     depositAmount: Int
     depositPaymentMethod: String
@@ -96,6 +96,7 @@ const typeDefs = gql`
     me: Client
     meTest(clientId: ID!): Client
     inquiries: [Inquiry]!
+    openInvoices: [Invoice]!
     activeClients: [Client]!
   }
 
@@ -145,7 +146,7 @@ const typeDefs = gql`
       depositPaymentMethod: String
     ): Invoice
     updateClient(
-      client: ID!
+      clientId: ID!
       firstName: String
       lastName: String
       email: String

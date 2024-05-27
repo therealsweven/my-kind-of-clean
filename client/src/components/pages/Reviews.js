@@ -16,7 +16,7 @@ const Reviews = () => {
         Reviews
       </h1>
       <div className="bg-info p-6 mb-6">
-        <ElfsightWidget widgetID="f08f864f-78f4-44e3-b53d-15236a657641" />
+        <ElfsightWidget widgetId="f08f864f-78f4-44e3-b53d-15236a657641" />
       </div>
     </>
   );

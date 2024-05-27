@@ -18,6 +18,12 @@ const resolvers = {
     activeClients: async () => {
       return await Client.find({ active: true });
     },
+    openInvoices: async () => {
+      return await Invoice.find({ paid: false }).populate([
+        "client",
+        "cleaning",
+      ]);
+    },
     clientById: async (parent, userInput) => {
       console.log(userInput);
       return await Client.findById({ _id: userInput.clientId });
@@ -113,13 +119,15 @@ const resolvers = {
       await helpers.verifyEmail(client, emailToken);
       return client;
     },
-    updateClient: async (parent, client, context) => {
-      console.log(client);
+    updateClient: async (parent, args, context) => {
+      console.log(args);
+
       const newClient = await Client.findByIdAndUpdate(
-        { _id: client.clientId },
-        { $set: client },
+        { _id: args.clientId },
+        { $set: args },
         { new: true }
       );
+      return newClient;
     },
     updateEmail: async (parent, { email }, context) => {
       if (context.user) {
@@ -259,6 +267,22 @@ const resolvers = {
         { new: true }
       );
       console.log(inquiry);
+    },
+    createInvoice: async (parent, args, context) => {
+      console.log(args);
+      if (args.cleaning === "") {
+        delete args.cleaning;
+      }
+      const invoice = await Invoice.create(args);
+      await Client.findByIdAndUpdate(
+        { _id: args.client },
+        {
+          $addToSet: {
+            invoices: invoice._id,
+          },
+        }
+      );
+      return invoice;
     },
   },
 };

@@ -129,6 +129,18 @@ const QUERY_ME = gql`
       zip
       invoices {
         _id
+        amount
+        createdAt
+        dateOfCleaning
+        depositAmount
+        depositPaid
+        depositPaymentMethod
+        discount
+        deposit
+        notes
+        paid
+        paymentMethod
+        services
       }
       commMethod
       subscribe
@@ -153,11 +165,44 @@ const QUERY_ME = gql`
           _id
         }
         notes
-
         startTime
       }
     }
   }
 `;
 
-export { QUERY_INQUIRIES, QUERY_ACTIVE_CLIENTS, QUERY_CLIENT_BY_ID, QUERY_ME };
+const QUERY_OPEN_INVOICES = gql`
+  query OpenInvoices {
+    openInvoices {
+      _id
+      amount
+      client {
+        _id
+        firstName
+        lastName
+      }
+      createdAt
+      dateOfCleaning
+      depositAmount
+      depositPaid
+      depositPaymentMethod
+      discount
+      deposit
+      notes
+      paid
+      paymentMethod
+      services
+      cleaning {
+        _id
+      }
+    }
+  }
+`;
+
+export {
+  QUERY_INQUIRIES,
+  QUERY_OPEN_INVOICES,
+  QUERY_ACTIVE_CLIENTS,
+  QUERY_CLIENT_BY_ID,
+  QUERY_ME,
+};

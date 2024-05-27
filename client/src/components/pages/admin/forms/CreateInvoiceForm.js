@@ -17,6 +17,10 @@ export default function CreateInvoiceForm() {
   // showing successful creation of invoice
   const [successOpen, setSuccessOpen] = useState(false);
   const [formOpen, setFormOpen] = useState(true);
+  const [depositRequired, setDepositRequired] = useState(false);
+  const [depositPaid, setDepositPaid] = useState(false);
+  const [alreadyPaid, setAlreadyPaid] = useState(false);
+
   function showSuccessMessage() {
     setSuccessOpen((successOpen) => !successOpen);
     setFormOpen((formOpen) => !formOpen);
@@ -30,18 +34,17 @@ export default function CreateInvoiceForm() {
     dateOfCleaning: "",
     client: "Please Select Client",
     cleaning: "",
-    amount: "0",
-    discount: "0",
+    amount: "",
+    discount: "",
     services: "",
     notes: "",
     paid: false,
-    paymentMethod: "N/A",
-    deposit: true,
-    depositAmount: "0",
+    paymentMethod: "",
+    deposit: false,
+    depositAmount: "",
     depositPaid: false,
-    depositPaymentMethod: "N/A",
+    depositPaymentMethod: "",
   };
-
   const validationSchema = Yup.object().shape({
     dateOfCleaning: Yup.date().required("This field is required"),
     client: Yup.string().required("This field is required"),
@@ -61,6 +64,8 @@ export default function CreateInvoiceForm() {
   const handleSubmit = async (values, { resetForm, setSubmitting }) => {
     try {
       console.log(values);
+      console.log(Number(values.depositAmount));
+      console.log(values.depositAmount);
       await createInvoice({
         variables: {
           dateOfCleaning: values.dateOfCleaning,
@@ -100,7 +105,7 @@ export default function CreateInvoiceForm() {
     );
     console.log(clientsLastAscending);
     return (
-      <div className="bg-accent p-10 min-w-[50%] rounded-lg m-6 border border-accent">
+      <div className="bg-accent p-10 min-w-[50%] rounded-lg m-6 border border-white">
         {formOpen && (
           <Formik
             id="createInvoiceForm"
@@ -131,7 +136,7 @@ export default function CreateInvoiceForm() {
                 {/* Clients populated from query and selected by admin user */}
                 <div className="form-control">
                   <label className="label" htmlFor="client">
-                    <span className="label-text text-xl ">Client</span>
+                    <span className="label-text text-xl">Client</span>
                   </label>
                   <Field
                     name="client"
@@ -230,7 +235,10 @@ export default function CreateInvoiceForm() {
                       name="paid"
                       // need to mark paid as true if paid
                       value={true}
-                      onChange={() => setFieldValue("paid", true)}
+                      onChange={() => {
+                        setFieldValue("paid", true);
+                        setAlreadyPaid(true);
+                      }}
                       className="mr-2"
                     />
                     Yes
@@ -241,26 +249,54 @@ export default function CreateInvoiceForm() {
                       name="paid"
                       //mark paid as false if not paid yet
                       value={false}
-                      onChange={() => setFieldValue("paid", false)}
+                      onChange={() => {
+                        setFieldValue("paid", false);
+                        setAlreadyPaid(false);
+                      }}
                       className="mr-2"
                     />
                     No
                   </label>
                 </div>
-                {/* Is deposit paid? */}
-                <div role="group" aria-labelledby="depositPaid">
-                  <label className="label" htmlFor="depositPaid">
+                {alreadyPaid ? (
+                  // Payment Method
+                  <div className="form-control">
+                    <label className="label" htmlFor="paymentMethod">
+                      <span className="label-text text-xl ">
+                        Payment Method
+                      </span>
+                    </label>
+                    <Field
+                      className="input input-bordered"
+                      type="text"
+                      name="paymentMethod"
+                    />
+                    <ErrorMessage
+                      name="paymentMethod"
+                      component="div"
+                      className="error"
+                    />
+                  </div>
+                ) : (
+                  <></>
+                )}
+                {/* Is deposit required? */}
+                <div role="group" aria-labelledby="deposit">
+                  <label className="label" htmlFor="deposit">
                     <span className="label-text text-xl ">
-                      Has the deposit been paid?
+                      Was or is a deposit required?
                     </span>
                   </label>
                   <label>
                     <Field
                       type="radio"
-                      name="depositPaid"
-                      // need to mark as true if paid
+                      name="deposit"
+                      // need to mark as true if needed
                       value={true}
-                      onChange={() => setFieldValue("depositPaid", true)}
+                      onChange={() => {
+                        setFieldValue("deposit", true);
+                        setDepositRequired(true);
+                      }}
                       className="mr-2"
                     />
                     Yes
@@ -268,31 +304,99 @@ export default function CreateInvoiceForm() {
                   <label className="ml-6">
                     <Field
                       type="radio"
-                      name="depositPaid"
-                      //mark active as false if not paid yet
+                      name="deposit"
+                      //mark active as false if not needed
                       value={false}
-                      onChange={() => setFieldValue("depositPaid", false)}
+                      onChange={() => {
+                        setFieldValue("deposit", false);
+                        setDepositRequired(false);
+                      }}
                       className="mr-2"
                     />
                     No
                   </label>
                 </div>
-                {/* Deposit Amount */}
-                <div className="form-control">
-                  <label className="label" htmlFor="depositAmount">
-                    <span className="label-text text-xl ">Deposit Amount</span>
-                  </label>
-                  <Field
-                    className="input input-bordered"
-                    type="text"
-                    name="depositAmount"
-                  />
-                  <ErrorMessage
-                    name="depositAmount"
-                    component="div"
-                    className="error"
-                  />
-                </div>
+                {depositRequired ? (
+                  <div>
+                    {/* // Deposit Amount */}
+                    <div className="form-control">
+                      <label className="label" htmlFor="depositAmount">
+                        <span className="label-text text-xl ">
+                          Deposit Amount
+                        </span>
+                      </label>
+                      <Field
+                        className="input input-bordered"
+                        type="text"
+                        name="depositAmount"
+                      />
+                      <ErrorMessage
+                        name="depositAmount"
+                        component="div"
+                        className="error"
+                      />
+                    </div>
+                    {/* //deposit paid? */}
+                    <div role="group" aria-labelledby="depositPaid">
+                      <label className="label" htmlFor="depositPaid">
+                        <span className="label-text text-xl ">
+                          Has the deposit been paid?
+                        </span>
+                      </label>
+                      <label>
+                        <Field
+                          type="radio"
+                          name="depositPaid"
+                          // need to mark as true if paid
+                          value={true}
+                          onChange={() => {
+                            setFieldValue("depositPaid", true);
+                            setDepositPaid(true);
+                          }}
+                          className="mr-2"
+                        />
+                        Yes
+                      </label>
+                      <label className="ml-6">
+                        <Field
+                          type="radio"
+                          name="depositPaid"
+                          //mark active as false if not paid yet
+                          value={false}
+                          onChange={() => {
+                            setFieldValue("depositPaid", false);
+                            setDepositPaid(false);
+                          }}
+                          className="mr-2"
+                        />
+                        No
+                      </label>
+                    </div>
+                    {depositPaid ? (
+                      <div className="form-control">
+                        <label className="label" htmlFor="depositPaymentMethod">
+                          <span className="label-text text-xl ">
+                            Deposit Payment Method
+                          </span>
+                        </label>
+                        <Field
+                          className="input input-bordered"
+                          type="text"
+                          name="depositPaymentMethod"
+                        />
+                        <ErrorMessage
+                          name="depositPaymentMethod"
+                          component="div"
+                          className="error"
+                        />
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                ) : (
+                  <></>
+                )}
 
                 <div className="form-control mt-6">
                   <button

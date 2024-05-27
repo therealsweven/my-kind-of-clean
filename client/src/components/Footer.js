@@ -22,7 +22,7 @@ export default function Footer() {
           </Link>
         </div>
         <p className="text-info font-bold text-l">
-          Copyright © 2023 My Kind of Clean, LLC - All rights reserved
+          Copyright © 2024 My Kind of Clean, LLC - All rights reserved
         </p>
       </div>
       <div className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">

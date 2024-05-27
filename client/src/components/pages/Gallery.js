@@ -1,6 +1,7 @@
 import React from "react";
 //import { Link } from "react-router-dom";
 //import { useQuery } from '@apollo/client';
+import { ElfsightWidget } from "react-elfsight-widget";
 
 const Gallery = () => {
   return (
@@ -15,10 +16,14 @@ const Gallery = () => {
         Gallery
       </h1>
       <div className="px-8">
-        <div
+        <ElfsightWidget
+          widgetId="94b15753-f2ca-40b1-b394-4c702a73db5b"
+          lazy-modern
+        />
+        {/* <div
           className="elfsight-app-94b15753-f2ca-40b1-b394-4c702a73db5b"
           data-elfsight-app-lazy
-        ></div>
+        ></div> */}
       </div>
     </>
   );
