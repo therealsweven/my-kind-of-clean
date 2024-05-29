@@ -199,10 +199,41 @@ const QUERY_OPEN_INVOICES = gql`
   }
 `;
 
+const QUERY_INVOICE_BY_ID = gql`
+  query InvoiceById($invoiceId: ID!) {
+    invoiceById(invoiceId: $invoiceId) {
+      _id
+      client {
+        _id
+      }
+      services
+      amount
+      discount
+      dateOfCleaning
+      notes
+      paid
+      paymentMethod
+      deposit
+      depositPaid
+      depositAmount
+      depositPaymentMethod
+      createdAt
+    }
+  }
+`;
+
+const PAY = gql`
+  query Query($amount: Int!) {
+    createCheckoutSession(amount: $amount)
+  }
+`;
+
 export {
   QUERY_INQUIRIES,
   QUERY_OPEN_INVOICES,
   QUERY_ACTIVE_CLIENTS,
   QUERY_CLIENT_BY_ID,
+  QUERY_INVOICE_BY_ID,
   QUERY_ME,
+  PAY,
 };

@@ -39,6 +39,8 @@ import Clients from "./components/pages/admin/Clients";
 import ClientProfile from "./components/pages/admin/ClientProfile";
 import AdminSettings from "./components/pages/admin/AdminSettings";
 import Services from "./components/pages/Services";
+import Pay from "./components/pages/Pay";
+import PaymentSuccess from "./components/pages/PaymentSuccess";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -108,6 +110,9 @@ function App() {
               element={<ClientProfile />}
             />
             <Route path="/admin/settings" element={<AdminSettings />} />
+            <Route path="/portal/pay" element={<Pay />} />
+            <Route path="/portal/paymentSuccess" element={<PaymentSuccess />} />
+            <Route path="/portal/pay/:invoiceId" element={<Pay />} />
           </Routes>
         </div>
         <Footer />

@@ -97,7 +97,9 @@ const typeDefs = gql`
     meTest(clientId: ID!): Client
     inquiries: [Inquiry]!
     openInvoices: [Invoice]!
+    invoiceById(invoiceId: ID!): Invoice
     activeClients: [Client]!
+    createCheckoutSession(amount: Int!): String
   }
 
   type Mutation {

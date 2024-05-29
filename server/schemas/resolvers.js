@@ -10,6 +10,10 @@ const { signToken } = require("../utils/auth");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
 
+const stripe = require("stripe")(
+  "sk_test_51PLBqxGSfaj7eX5pAOQgGgsqUN9h1bfGf1NDVRtM1HpADmAWYtXlGwd1P4c239l2ORJdrV2sD3v2bgVCOeFyqBxQ00BHB0F3jk"
+);
+
 const resolvers = {
   Query: {
     inquiries: async () => {
@@ -28,6 +32,10 @@ const resolvers = {
       console.log(userInput);
       return await Client.findById({ _id: userInput.clientId });
     },
+    invoiceById: async (parent, userInput) => {
+      console.log(userInput);
+      return await Invoice.findById({ _id: userInput.invoiceId });
+    },
     me: async (parent, args, context) => {
       //console.log(context.headers.clientid);
       return await Client.findById({ _id: context.headers.clientid }).populate([
@@ -40,6 +48,21 @@ const resolvers = {
         "properties",
         "invoices",
       ]);
+    },
+    createCheckoutSession: async (parent, { amount }, context) => {
+      // NEED TO INTEGRATE INTO RESOLVER
+      // Create a PaymentIntent with the order amount and currency
+      console.log(amount);
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: amount * 100,
+        currency: "usd",
+        // In the latest version of the API, specifying the `automatic_payment_methods` parameter is optional because Stripe enables its functionality by default.
+        automatic_payment_methods: {
+          enabled: true,
+        },
+      });
+      const clientSecret = paymentIntent.client_secret;
+      return clientSecret;
     },
   },
 

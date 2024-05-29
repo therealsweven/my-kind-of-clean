@@ -1,5 +1,5 @@
 import React from "react";
-//import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME } from "../../utils/queries";
 
@@ -72,9 +72,12 @@ const Dashboard = () => {
                                 <p>✅</p>
                               ) : (
                                 <p>
-                                  <button className="btn btn-xs btn-primary text-white">
+                                  <Link
+                                    className="btn btn-xs btn-primary text-white"
+                                    to={"/portal/pay/" + invoice._id}
+                                  >
                                     PAY DEPOSIT
-                                  </button>
+                                  </Link>
                                 </p>
                               )}
                             </p>
