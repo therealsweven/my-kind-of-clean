@@ -19,6 +19,10 @@ const Dashboard = () => {
 
   if (!loading) {
     console.log(me);
+    const invoices = me.invoices.filter(function (obj) {
+      return obj.paid !== true;
+    });
+    console.log(invoices);
 
     // Calculate total due
     return (
@@ -55,7 +59,7 @@ const Dashboard = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {me.invoices.map((invoice) =>
+                    {invoices.map((invoice) =>
                       !invoice.paid ? (
                         <tr>
                           <td className="border-b py-3">

@@ -99,7 +99,7 @@ const typeDefs = gql`
     openInvoices: [Invoice]!
     invoiceById(invoiceId: ID!): Invoice
     activeClients: [Client]!
-    createCheckoutSession(amount: Int!): String
+    createCheckoutSession(amount: Int!, invoiceId: ID!): String
   }
 
   type Mutation {
@@ -178,6 +178,22 @@ const typeDefs = gql`
     resetPassword(email: String!): Client
     markResponded(inquiryId: ID!): Inquiry
     deleteInquiry(inquiryId: ID!): Inquiry
+    updateInvoice(
+      invoiceId: ID!
+      paymentAmount: Int
+      services: String
+      amount: Int
+      discount: Int
+      cleaning: ID
+      dateOfCleaning: String
+      notes: String
+      paid: Boolean
+      paymentMethod: String
+      deposit: Boolean
+      depositPaid: Boolean
+      depositAmount: Int
+      depositPaymentMethod: String
+    ): Invoice
   }
 `;
 

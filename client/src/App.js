@@ -51,12 +51,14 @@ const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   const adminLoggedIn = localStorage.getItem("adminLoggedIn");
   const clientId = localStorage.getItem("clientId");
+  const paymentAmount = localStorage.getItem("paymentAmount");
+
   // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-      adminLoggedIn: adminLoggedIn,
+      paymentAmount: paymentAmount,
       clientId: clientId,
     },
   };
@@ -111,7 +113,10 @@ function App() {
             />
             <Route path="/admin/settings" element={<AdminSettings />} />
             <Route path="/portal/pay" element={<Pay />} />
-            <Route path="/portal/paymentSuccess" element={<PaymentSuccess />} />
+            <Route
+              path="/portal/paymentSuccess/:invoiceId/:paymentAmount"
+              element={<PaymentSuccess />}
+            />
             <Route path="/portal/pay/:invoiceId" element={<Pay />} />
           </Routes>
         </div>

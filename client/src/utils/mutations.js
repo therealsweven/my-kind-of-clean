@@ -247,6 +247,47 @@ const MARK_RESPONDED = gql`
     }
   }
 `;
+const UPDATE_INVOICE = gql`
+  mutation UpdateInvoice(
+    $invoiceId: ID!
+    $services: String
+    $paymentAmount: Int
+    $amount: Int
+    $discount: Int
+    $cleaning: ID
+    $notes: String
+    $paid: Boolean
+    $paymentMethod: String
+    $deposit: Boolean
+    $depositPaid: Boolean
+    $depositAmount: Int
+    $depositPaymentMethod: String
+    $dateOfCleaning: String
+  ) {
+    updateInvoice(
+      invoiceId: $invoiceId
+      services: $services
+      paymentAmount: $paymentAmount
+      amount: $amount
+      discount: $discount
+      cleaning: $cleaning
+      notes: $notes
+      paid: $paid
+      paymentMethod: $paymentMethod
+      deposit: $deposit
+      depositPaid: $depositPaid
+      depositAmount: $depositAmount
+      depositPaymentMethod: $depositPaymentMethod
+      dateOfCleaning: $dateOfCleaning
+    ) {
+      _id
+      depositPaid
+      deposit
+      paid
+      paymentMethod
+    }
+  }
+`;
 
 export {
   CREATE_INQUIRY,
@@ -265,4 +306,5 @@ export {
   DESTROY_ACCOUNT,
   DELETE_INQUIRY,
   MARK_RESPONDED,
+  UPDATE_INVOICE,
 };

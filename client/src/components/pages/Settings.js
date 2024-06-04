@@ -72,12 +72,14 @@ const Settings = () => {
               {me.verified && <td className="text-xs">✅ Verified</td>}
               {!me.verified && !linkSent && (
                 <td>
-                  <button
-                    className="text-xs underline"
-                    onClick={handleSendLink}
-                  >
-                    Send Verification Link
-                  </button>
+                  <div className="w-1/2 flex">
+                    <button
+                      className="text-xs underline btn btn-sm btn-secondary text-white"
+                      onClick={handleSendLink}
+                    >
+                      Send Verification Link
+                    </button>
+                  </div>
                 </td>
               )}
               {!me.verified && linkSent && (

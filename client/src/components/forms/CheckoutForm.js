@@ -5,7 +5,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({ invoiceId, paymentAmount }) {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -54,11 +54,13 @@ export default function CheckoutForm() {
 
     setIsLoading(true);
 
+    let returnURL = "http://localhost:3000/portal/paymentSuccess/";
+    returnURL = returnURL.concat(invoiceId).concat("/").concat(paymentAmount);
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: "http://localhost:3000/portal/paymentSuccess",
+        return_url: returnURL,
       },
     });
 

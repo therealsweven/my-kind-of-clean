@@ -63,10 +63,17 @@ export default function ClientLoginForm() {
               {/*content*/}
               <div className="border border-accent p-6 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-info rounded-t">
+                <div className="flex items-start justify-between p-5 border-b mb-3 border-solid border-info rounded-t">
                   <h3 className="text-3xl font-semibold text-info">
                     Client Login
                   </h3>
+                  <button
+                    className="text-info background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 w-1/5"
+                    type="button"
+                    onClick={() => setShowModal(false)}
+                  >
+                    Close
+                  </button>
                 </div>
 
                 <Formik
@@ -124,7 +131,7 @@ export default function ClientLoginForm() {
                           Create Account
                         </Link>
                         <button
-                          className="btn btn-sm btn-accent text-info border border-info"
+                          className="btn btn-accent text-info border border-info w-1/4"
                           type="submit"
                           disabled={isSubmitting}
                         >
@@ -134,16 +141,6 @@ export default function ClientLoginForm() {
                     </Form>
                   )}
                 </Formik>
-                {/*footer*/}
-                <div className="flex items-center justify-end p-6 border-t border-solid border-info rounded-b">
-                  <button
-                    className="text-info background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
-                    type="button"
-                    onClick={() => setShowModal(false)}
-                  >
-                    Close
-                  </button>
-                </div>
               </div>
             </div>
           </div>

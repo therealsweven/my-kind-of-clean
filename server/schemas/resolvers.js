@@ -49,9 +49,8 @@ const resolvers = {
         "invoices",
       ]);
     },
-    createCheckoutSession: async (parent, { amount }, context) => {
-      // NEED TO INTEGRATE INTO RESOLVER
-      // Create a PaymentIntent with the order amount and currency
+    createCheckoutSession: async (parent, { amount, invoiceId }, context) => {
+      // Create a PaymentIntent with the order amount and currency, and invoice id attached
       console.log(amount);
       const paymentIntent = await stripe.paymentIntents.create({
         amount: amount * 100,
@@ -60,6 +59,7 @@ const resolvers = {
         automatic_payment_methods: {
           enabled: true,
         },
+        description: "Invoice:  " + invoiceId,
       });
       const clientSecret = paymentIntent.client_secret;
       return clientSecret;
@@ -306,6 +306,60 @@ const resolvers = {
         }
       );
       return invoice;
+    },
+    updateInvoice: async (parent, args, context) => {
+      console.log("update", args);
+      const invoice = await Invoice.findById({ _id: args.invoiceId });
+      console.log(invoice);
+      const updates = {};
+      if (args.services) {
+        updates.services = args.services;
+      }
+      if (args.amount) {
+        updates.amount = args.amount;
+      }
+      if (args.discount) {
+        updates.discount = args.discount;
+      }
+      if (args.notes) {
+        updates.notes = args.notes;
+      }
+      if (args.cleaning) {
+        updates.cleaning = args.cleaning;
+      }
+      if (args.paid) {
+        updates.paid = args.paid;
+      }
+      if (args.paymentMethod) {
+        updates.paymentMethod = args.paymentMethod;
+      }
+      if (args.depositPaymentMethod) {
+        updates.depositPaymentMethod = args.depositPaymentMethod;
+      }
+      if (args.depositPaid) {
+        updates.depositPaid = args.depositPaid;
+      }
+      if (args.deposit) {
+        updates.deposit = args.deposit;
+      }
+      if (args.depositAmount) {
+        updates.depositAmount = args.depositAmount;
+      }
+      if (args.paymentAmount) {
+        if (args.paymentAmount === invoice.depositAmount) {
+          updates.depositPaid = true;
+          updates.depositPaymentMethod = "e-payment";
+        } else {
+          updates.paid = true;
+          updates.paymentMethod = "e-payment";
+        }
+      }
+      console.log(updates);
+      return await Invoice.findByIdAndUpdate(
+        { _id: args.invoiceId },
+        { $set: { paid: updates.paid, paymentMethod: updates.paymentMethod } },
+        { new: true }
+      );
     },
   },
 };

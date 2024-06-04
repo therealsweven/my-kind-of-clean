@@ -5,7 +5,7 @@ import { useQuery } from "@apollo/client";
 import { PAY, QUERY_INVOICE_BY_ID } from "../../utils/queries";
 import { useParams } from "react-router-dom";
 
-import CheckoutForm from "./forms/CheckoutForm";
+import CheckoutForm from "../forms/CheckoutForm";
 // import "../../App.css";
 
 const stripePromise = loadStripe(
@@ -25,20 +25,63 @@ export default function Pay() {
     error: invoiceError,
   } = useQuery(QUERY_INVOICE_BY_ID, { variables: { invoiceId: invoiceId } });
   const invoice = invoiceData?.invoiceById || {};
-
+  console.log(paymentAmount);
   const {
     loading: payLoading,
     data: payData,
     error: payError,
     refetch,
-  } = useQuery(PAY, { variables: { amount: paymentAmount.amount } });
+  } = useQuery(PAY, {
+    variables: { amount: paymentAmount.amount, invoiceId: invoiceId },
+  });
 
   useEffect(() => {
     if (!invoiceLoading && invoiceData) {
-      console.log(invoice);
+      localStorage.setItem(
+        "paymentAmount",
+        invoiceData.invoiceById.amount.toString()
+      );
+      console.log(invoiceData.invoiceById);
+      let selectedPaymentAmount = "";
+      if (!invoiceData.invoiceById.deposit) {
+        selectedPaymentAmount =
+          invoiceData.invoiceById.amount -
+          (invoiceData.invoiceById.amount * invoiceData.invoiceById.discount) /
+            100;
+        localStorage.setItem("paymentAmount", selectedPaymentAmount.toString());
+        setPaymentAmount({
+          checked: "payFullAmount",
+          amount: selectedPaymentAmount,
+        });
+      }
+      if (
+        !invoiceData.invoiceById.depositPaid &&
+        invoiceData.invoiceById.deposit
+      ) {
+        selectedPaymentAmount = invoiceData.invoiceById.depositAmount;
+        localStorage.setItem("paymentAmount", selectedPaymentAmount.toString());
+        setPaymentAmount({
+          checked: "payDeposit",
+          amount: selectedPaymentAmount,
+        });
+      }
+      if (
+        invoiceData.invoiceById.depositPaid &&
+        invoiceData.invoiceById.deposit
+      ) {
+        selectedPaymentAmount =
+          invoiceData.invoiceById.amount -
+          (invoiceData.invoiceById.amount * invoiceData.invoiceById.discount) /
+            100 -
+          invoiceData.invoiceById.depositAmount;
+        localStorage.setItem("paymentAmount", selectedPaymentAmount.toString());
+        setPaymentAmount({
+          checked: "payinFull",
+          amount: selectedPaymentAmount,
+        });
+      }
     }
   }, [invoiceLoading, invoiceData]);
-
   useEffect(() => {
     if (!payLoading && payData) {
       console.log(payData);
@@ -88,7 +131,7 @@ export default function Pay() {
                 <input
                   type="radio"
                   name="paymentAmount"
-                  checked={checked === "payDeposit"}
+                  checked={paymentAmount.checked === "payDeposit"}
                   onChange={() => {
                     setPaymentAmount({
                       amount: invoice.depositAmount,
@@ -101,12 +144,11 @@ export default function Pay() {
                 <input
                   type="radio"
                   name="paymentAmount"
-                  checked={checked === "payInFull"}
+                  checked={paymentAmount.checked === "payInFull"}
                   onChange={() => {
                     setPaymentAmount({
                       amount:
                         invoice.amount -
-                        invoice.depositAmount -
                         (invoice.amount * invoice.discount) / 100,
                       checked: "payInFull",
                     });
@@ -145,7 +187,10 @@ export default function Pay() {
       </div>
       {clientSecret && (
         <Elements options={options} stripe={stripePromise}>
-          <CheckoutForm />
+          <CheckoutForm
+            paymentAmount={paymentAmount.amount}
+            invoiceId={invoice._id}
+          />
         </Elements>
       )}
     </div>

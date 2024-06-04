@@ -223,8 +223,8 @@ const QUERY_INVOICE_BY_ID = gql`
 `;
 
 const PAY = gql`
-  query Query($amount: Int!) {
-    createCheckoutSession(amount: $amount)
+  query Query($amount: Int!, $invoiceId: ID!) {
+    createCheckoutSession(amount: $amount, invoiceId: $invoiceId)
   }
 `;
 
