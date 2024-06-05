@@ -56,6 +56,7 @@ const Dashboard = () => {
                       <th>Services</th>
                       <th>Amount</th>
                       <th>Deposit Amount</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tbody>
@@ -84,6 +85,16 @@ const Dashboard = () => {
                                   </Link>
                                 </p>
                               )}
+                            </p>
+                          </td>
+                          <td>
+                            <p>
+                              <Link
+                                className="btn btn-xs btn-primary text-white"
+                                to={"/portal/pay/" + invoice._id}
+                              >
+                                PAY
+                              </Link>
                             </p>
                           </td>
                         </tr>
