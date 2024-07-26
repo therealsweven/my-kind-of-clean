@@ -35,6 +35,7 @@ import Terms from "./components/pages/Terms";
 import Inquiries from "./components/pages/admin/Inquiries";
 import Scheduling from "./components/pages/admin/Scheduling";
 import Billing from "./components/pages/admin/Billing";
+import AdminInvoice from "./components/pages/admin/AdminInvoice";
 import Clients from "./components/pages/admin/Clients";
 import ClientProfile from "./components/pages/admin/ClientProfile";
 import AdminSettings from "./components/pages/admin/AdminSettings";
@@ -107,6 +108,10 @@ function App() {
             <Route path="/admin/scheduling" element={<Scheduling />} />
             <Route path="/admin/billing" element={<Billing />} />
             <Route path="/admin/clients" element={<Clients />} />
+            <Route
+              path="/admin/invoice/:invoiceId"
+              element={<AdminInvoice />}
+            />
             <Route
               path="/admin/clients/:clientId"
               element={<ClientProfile />}

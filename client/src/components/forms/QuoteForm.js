@@ -55,7 +55,7 @@ export default function QuoteForm() {
   };
 
   return (
-    <div className="bg-primary p-10 min-w-[50%] rounded-lg m-6 border border-accent">
+    <div className="bg-primary p-3 min-w-[50%] rounded-lg m-2 border border-accent">
       {formOpen && (
         <Formik
           id="contactForm"
@@ -167,7 +167,7 @@ export default function QuoteForm() {
 
               <div className="form-control mt-6">
                 <button
-                  className="btn btn-lg btn-accent mx-auto"
+                  className="btn btn-lg btn-white mx-auto"
                   type="submit"
                   disabled={isSubmitting}
                 >

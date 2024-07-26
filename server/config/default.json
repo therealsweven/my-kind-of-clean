@@ -1,0 +1,12 @@
+{
+  "CLIENT_ID": "1097403783809-rsvf97mfurrgbj70u0s99ntolb8j5vk7.apps.googleusercontent.com",
+  "CLIENT_SECRET": "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",
+  "REDIRECT_URI": "https://developers.google.com/oauthplayground",
+  "REFRESH_TOKEN": "1//04e46Q3UNeezICgYIARAAGAQSNwF-L9IrT_5vFVqNNf6StMUu8IXqoN9PJIXAiPVSjUb0NZS9nt0dYSixvO7gg8QkLKfKZaeRrkU",
+  "ADMIN_EMAIL": "angelica@mykindofclean.net",
+  "ADMIN_PASSWORD": "CleaningemupGUD69!",
+  "MONGODB_URI": "mongodb+srv://mastacoda11:kjyhQvnh3cVeRLgP@devcluster.hxqi8fu.mongodb.net/?retryWrites=true&w=majority&appName=DevCluster",
+  "MONGO_PASSWORD": "kjyhQvnh3cVeRLgP",
+  "NODE_ENV": "production",
+  "STRIPE_SECRET": "sk_test_51PLBqxGSfaj7eX5pAOQgGgsqUN9h1bfGf1NDVRtM1HpADmAWYtXlGwd1P4c239l2ORJdrV2sD3v2bgVCOeFyqBxQ00BHB0F3jk"
+}

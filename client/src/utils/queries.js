@@ -205,6 +205,11 @@ const QUERY_INVOICE_BY_ID = gql`
       _id
       client {
         _id
+        firstName
+        lastName
+        street
+        city
+        zip
       }
       services
       amount

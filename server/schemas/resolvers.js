@@ -34,7 +34,9 @@ const resolvers = {
     },
     invoiceById: async (parent, userInput) => {
       console.log(userInput);
-      return await Invoice.findById({ _id: userInput.invoiceId });
+      return await Invoice.findById({ _id: userInput.invoiceId }).populate(
+        "client"
+      );
     },
     me: async (parent, args, context) => {
       //console.log(context.headers.clientid);

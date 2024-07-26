@@ -1,16 +1,16 @@
 const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
-require("dotenv").config();
+const config = require("config");
 
 //set up OAUTH 2.0 Client
 const oAuth2Client = new google.auth.OAuth2(
-  process.env.CLIENT_ID,
-  process.env.CLIENT_SECRET,
-  process.env.REDIRECT_URI
+  config.get("CLIENT_ID"),
+  config.get("CLIENT_SECRET"),
+  config.get("REDIRECT_URI")
 );
 
 //set credentials for client
-oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+oAuth2Client.setCredentials({ refresh_token: config.get("REFRESH_TOKEN") });
 
 module.exports = {
   sendConfirmation: async (info) => {
@@ -22,9 +22,9 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: process.env.CLIENT_ID,
-          clientSecret: process.env.CLIENT_SECRET,
-          refreshToken: process.env.REFRESH_TOKEN,
+          clientId: config.get("CLIENT_ID"),
+          clientSecret: config.get("CLIENT_SECRET"),
+          refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
         },
       });

@@ -1,5 +1,6 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
+import { Link } from "react-router-dom";
 import CreateInvoiceForm from "./forms/CreateInvoiceForm";
 import { QUERY_OPEN_INVOICES } from "../../../utils/queries";
 export default function Billing() {
@@ -33,6 +34,7 @@ export default function Billing() {
                   <th>Client</th>
                   <th>Amount</th>
                   <th>Date</th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
@@ -43,6 +45,16 @@ export default function Billing() {
                     </td>
                     <td>{invoice.amount}</td>
                     <td>{invoice.dateOfCleaning}</td>
+                    <td>
+                      <p>
+                        <Link
+                          className="btn btn-xs btn-primary text-white"
+                          to={"/admin/invoice/" + invoice._id}
+                        >
+                          VIEW
+                        </Link>
+                      </p>
+                    </td>
                   </tr>
                 ))}
               </tbody>

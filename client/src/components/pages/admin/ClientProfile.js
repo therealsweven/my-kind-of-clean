@@ -1,11 +1,12 @@
 import { React, useState } from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { QUERY_CLIENT_BY_ID } from "../../../utils/queries";
 import UpdateClientForm from "./forms/UpdateClientForm";
 export default function ClientProfile() {
   let [openUpdateClientForm, setOpenUpdateClientForm] = useState(false);
   let { clientId } = useParams();
+  let navigate = useNavigate();
 
   const { loading, data, error, refetch } = useQuery(
     QUERY_CLIENT_BY_ID,
@@ -39,7 +40,12 @@ export default function ClientProfile() {
     console.log(client);
     return (
       <>
-        <Link to="/admin/clients" className="btn btn-sm mt-6 ml-6">
+        <Link
+          onClick={() => {
+            navigate(-1);
+          }}
+          className="btn btn-sm mt-6 ml-6"
+        >
           Back
         </Link>
         <h1 className="text-3xl text-center">

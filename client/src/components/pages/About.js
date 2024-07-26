@@ -12,8 +12,8 @@ const About = () => {
       >
         About
       </h1>
-      <div className="flex">
-        <div className="text-justify py-6 px-24">
+      <div className="flex flex-col-reverse md:flex-row lg:flex-row">
+        <div className="text-justify py-6 px-10 md:px-24 lg:px-24">
           <p>
             Hi, my name is Angelica Levy, owner of My Kind of Clean. My vision
             is to offer a comprehensive range of cleaning services that not only
@@ -65,7 +65,7 @@ const About = () => {
         <div className="flex flex-col justify-center px-8">
           <img
             className="rounded-full"
-            src="https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/441312089_979466587521789_8280812821867300159_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LeCjojqeRM0Q7kNvgHl-36G&_nc_ht=scontent-den2-1.xx&oh=00_AYCci169gxZ2caclkkSCozqY1ivNXyje3f07y-I1spXi7w&oe=6657BBB6https://scontent-den2-1.xx.fbcdn.net/v/t39.30808-6/441312089_979466587521789_8280812821867300159_n.jpg?stp=cp6_dst-jpg&_nc_cat=106&ccb=1-7&_nc_sid=5f2048&_nc_ohc=LeCjojqeRM0Q7kNvgHl-36G&_nc_ht=scontent-den2-1.xx&oh=00_AYCci169gxZ2caclkkSCozqY1ivNXyje3f07y-I1spXi7w&oe=6657BBB6"
+            src="https://i.ibb.co/gRxVf7n/441312089-979466587521789-8280812821867300159-n.jpg"
           ></img>
         </div>
       </div>
