@@ -9,10 +9,9 @@ const { Invoice } = require("../models/Invoice");
 const { signToken } = require("../utils/auth");
 const bcrypt = require("bcrypt");
 const { v4: uuidv4 } = require("uuid");
+const config = require("config");
 
-const stripe = require("stripe")(
-  "sk_test_51PLBqxGSfaj7eX5pAOQgGgsqUN9h1bfGf1NDVRtM1HpADmAWYtXlGwd1P4c239l2ORJdrV2sD3v2bgVCOeFyqBxQ00BHB0F3jk"
-);
+const stripe = require("stripe")(config.get("STRIPE_SECRET"));
 
 const resolvers = {
   Query: {

@@ -1,4 +1,4 @@
-require("dotenv").config();
+const config = require("config");
 require("bcrypt");
 const db = require("../config/connection");
 const { Admin } = require("../models/Admin.js");
@@ -10,8 +10,8 @@ const inquirySeeds = require("./inquiries.json");
 const adminSeeds = {
   firstName: "Angelica",
   lastName: "Levy",
-  email: process.env.ADMIN_EMAIL,
-  password: process.env.ADMIN_PASSWORD,
+  email: config.get("ADMIN_EMAIL"),
+  password: config.get("ADMIN_PASSWORD"),
 };
 
 const seed = async () => {
