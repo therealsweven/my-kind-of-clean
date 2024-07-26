@@ -57,9 +57,9 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: process.env.CLIENT_ID,
-          clientSecret: process.env.CLIENT_SECRET,
-          refreshToken: process.env.REFRESH_TOKEN,
+          clientId: config.get("CLIENT_ID"),
+          clientSecret: config.get("CLIENT_SECRET"),
+          refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
         },
       });
@@ -97,9 +97,9 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: process.env.CLIENT_ID,
-          clientSecret: process.env.CLIENT_SECRET,
-          refreshToken: process.env.REFRESH_TOKEN,
+          clientId: config.get("CLIENT_ID"),
+          clientSecret: config.get("CLIENT_SECRET"),
+          refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
         },
       });
@@ -135,9 +135,9 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: process.env.CLIENT_ID,
-          clientSecret: process.env.CLIENT_SECRET,
-          refreshToken: process.env.REFRESH_TOKEN,
+          clientId: config.get("CLIENT_ID"),
+          clientSecret: config.get("CLIENT_SECRET"),
+          refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
         },
       });
@@ -169,9 +169,9 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: process.env.CLIENT_ID,
-          clientSecret: process.env.CLIENT_SECRET,
-          refreshToken: process.env.REFRESH_TOKEN,
+          clientId: config.get("CLIENT_ID"),
+          clientSecret: config.get("CLIENT_SECRET"),
+          refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
         },
       });
