@@ -4,7 +4,7 @@ const config = require("config");
 
 //set up OAUTH 2.0 Client
 const oAuth2Client = new google.auth.OAuth2(
-  config.get("CLIENT_ID"),
+  config.get("CLIENTT_ID"), 
   config.get("CLIENT_SECRET"),
   config.get("REDIRECT_URI")
 );
@@ -22,7 +22,7 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: config.get("CLIENT_ID"),
+          clientId: config.get("CLIENTT_ID"),
           clientSecret: config.get("CLIENT_SECRET"),
           refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
@@ -57,7 +57,7 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: config.get("CLIENT_ID"),
+          clientId: config.get("CLIENTT_ID"),
           clientSecret: config.get("CLIENT_SECRET"),
           refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
@@ -97,7 +97,7 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: config.get("CLIENT_ID"),
+          clientId: config.get("CLIENTT_ID"),
           clientSecret: config.get("CLIENT_SECRET"),
           refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
@@ -135,7 +135,7 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: config.get("CLIENT_ID"),
+          clientId: config.get("CLIENTT_ID"),
           clientSecret: config.get("CLIENT_SECRET"),
           refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
@@ -169,7 +169,7 @@ module.exports = {
         auth: {
           type: "OAuth2",
           user: "support@mykindofclean.net",
-          clientId: config.get("CLIENT_ID"),
+          clientId: config.get("CLIENTT_ID"),
           clientSecret: config.get("CLIENT_SECRET"),
           refreshToken: config.get("REFRESH_TOKEN"),
           accessToken: accessToken,
