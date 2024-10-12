@@ -1,37 +1,37 @@
-const nodemailer = require("nodemailer");
-const { google } = require("googleapis");
-const config = require("config");
+const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
+const config = require('config');
 
 //set up OAUTH 2.0 Client
 const oAuth2Client = new google.auth.OAuth2(
-  config.get("CLIENTT_ID"), 
-  config.get("CLIENT_SECRET"),
-  config.get("REDIRECT_URI")
+  config.get('CLIENT_ID'),
+  config.get('CLIENT_SECRET'),
+  config.get('REDIRECT_URI')
 );
 
 //set credentials for client
-oAuth2Client.setCredentials({ refresh_token: config.get("REFRESH_TOKEN") });
+oAuth2Client.setCredentials({ refresh_token: config.get('REFRESH_TOKEN') });
 
 module.exports = {
   sendConfirmation: async (info) => {
     try {
-      console.log("INFO", info);
+      console.log('INFO', info);
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
-          type: "OAuth2",
-          user: "support@mykindofclean.net",
-          clientId: config.get("CLIENTT_ID"),
-          clientSecret: config.get("CLIENT_SECRET"),
-          refreshToken: config.get("REFRESH_TOKEN"),
+          type: 'OAuth2',
+          user: 'support@mykindofclean.net',
+          clientId: config.get('CLIENT_ID'),
+          clientSecret: config.get('CLIENT_SECRET'),
+          refreshToken: config.get('REFRESH_TOKEN'),
           accessToken: accessToken,
         },
       });
       const mailOptions = {
-        from: "My Kind of Clean <support@mykindofclean.net>",
+        from: 'My Kind of Clean <support@mykindofclean.net>',
         to: info.email,
-        subject: "Inquiry Confirmation",
+        subject: 'Inquiry Confirmation',
         text: `Hello ${info.name},
         Thank you for inquiring about our cleaning services.  We will get back to you in 48 hours or less via your preferred method of communication.  If you have any immediate questions, please feel free to call our business telephone at (720)-846-3205.  We look forward to working with you.  Have a magical day!        
         Best wishes,
@@ -53,20 +53,20 @@ module.exports = {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
-          type: "OAuth2",
-          user: "support@mykindofclean.net",
-          clientId: config.get("CLIENTT_ID"),
-          clientSecret: config.get("CLIENT_SECRET"),
-          refreshToken: config.get("REFRESH_TOKEN"),
+          type: 'OAuth2',
+          user: 'support@mykindofclean.net',
+          clientId: config.get('CLIENT_ID'),
+          clientSecret: config.get('CLIENT_SECRET'),
+          refreshToken: config.get('REFRESH_TOKEN'),
           accessToken: accessToken,
         },
       });
       const mailOptions = {
-        from: "My Kind of Clean Support <support@mykindofclean.net>",
-        to: "angelica@mykindofclean.net",
-        subject: "New Cleaning Inquiry",
+        from: 'My Kind of Clean Support <support@mykindofclean.net>',
+        to: 'angelica@mykindofclean.net',
+        subject: 'New Cleaning Inquiry',
         text: `Name: ${info.name}
         Email: ${info.email}
         Phone: ${info.phone}
@@ -93,20 +93,20 @@ module.exports = {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
-          type: "OAuth2",
-          user: "support@mykindofclean.net",
-          clientId: config.get("CLIENTT_ID"),
-          clientSecret: config.get("CLIENT_SECRET"),
-          refreshToken: config.get("REFRESH_TOKEN"),
+          type: 'OAuth2',
+          user: 'support@mykindofclean.net',
+          clientId: config.get('CLIENT_ID'),
+          clientSecret: config.get('CLIENT_SECRET'),
+          refreshToken: config.get('REFRESH_TOKEN'),
           accessToken: accessToken,
         },
       });
       const mailOptions = {
-        from: "My Kind of Clean<support@mykindofclean.net>",
+        from: 'My Kind of Clean<support@mykindofclean.net>',
         to: info.email,
-        subject: "Verify Your Email",
+        subject: 'Verify Your Email',
         text: `Hello ${info.firstName},
         Please verify your email by clicking the link below.
         http://localhost:3000/verifyEmail/${info._id}/${emailToken}
@@ -131,20 +131,20 @@ module.exports = {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
-          type: "OAuth2",
-          user: "support@mykindofclean.net",
-          clientId: config.get("CLIENTT_ID"),
-          clientSecret: config.get("CLIENT_SECRET"),
-          refreshToken: config.get("REFRESH_TOKEN"),
+          type: 'OAuth2',
+          user: 'support@mykindofclean.net',
+          clientId: config.get('CLIENT_ID'),
+          clientSecret: config.get('CLIENT_SECRET'),
+          refreshToken: config.get('REFRESH_TOKEN'),
           accessToken: accessToken,
         },
       });
       const mailOptions = {
-        from: "My Kind of Clean<support@mykindofclean.net>",
+        from: 'My Kind of Clean<support@mykindofclean.net>',
         to: info.email,
-        subject: "Your Account Has Been Deleted",
+        subject: 'Your Account Has Been Deleted',
         text: `Hello ${info.firstName},
         Your account has been successfully deleted. You will no longer be able to access the client portal unless you create a new account.
        Best wishes,
@@ -165,20 +165,20 @@ module.exports = {
     try {
       const accessToken = await oAuth2Client.getAccessToken();
       const transporter = nodemailer.createTransport({
-        service: "gmail",
+        service: 'gmail',
         auth: {
-          type: "OAuth2",
-          user: "support@mykindofclean.net",
-          clientId: config.get("CLIENTT_ID"),
-          clientSecret: config.get("CLIENT_SECRET"),
-          refreshToken: config.get("REFRESH_TOKEN"),
+          type: 'OAuth2',
+          user: 'support@mykindofclean.net',
+          clientId: config.get('CLIENT_ID'),
+          clientSecret: config.get('CLIENT_SECRET'),
+          refreshToken: config.get('REFRESH_TOKEN'),
           accessToken: accessToken,
         },
       });
       const mailOptions = {
-        from: "My Kind of Clean <support@mykindofclean.net>",
+        from: 'My Kind of Clean <support@mykindofclean.net>',
         to: info.email,
-        subject: "Reset Your Password",
+        subject: 'Reset Your Password',
         text: `Hello ${info.firstName},
         Your temporary password is '${tempPW}'.  You may change your password in your account settings once logged in. Please feel free to reach out by phone or email if you have any issues accessing your account.  Thanks, and have a magical day! Best wishes, My Kind of Clean`,
         html: `<p>Hello ${info.firstName},</p>
